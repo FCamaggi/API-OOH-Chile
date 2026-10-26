@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.0",
   "info": {
     "title": "API-OOH-Chile — Plataforma Geoespacial y Auditoría OOH/DOOH (RM)",
     "description": "Plataforma API-First de Inteligencia Geoespacial, Planificación Comercial y Fiscalización Normativa (Ley N° 21.473) para el inventario OOH y DOOH en las 52 comunas de la Región Metropolitana de Santiago.",
@@ -15,28 +15,42 @@
         "operationId": "get_rm_communes_v1_territories_communes_get",
         "parameters": [
           {
-            "description": "Filtrar por Anillo Operativo RM (1 a 4)",
+            "name": "ring_tier",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Ring Tier",
-              "maximum": 4.0,
-              "minimum": 1.0,
-              "type": "integer",
-              "description": "Filtrar por Anillo Operativo RM (1 a 4)"
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "maximum": 4,
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filtrar por Anillo Operativo RM (1 a 4)",
+              "title": "Ring Tier"
             },
-            "name": "ring_tier",
-            "in": "query"
+            "description": "Filtrar por Anillo Operativo RM (1 a 4)"
           },
           {
-            "description": "Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo, Melipilla, Talagante)",
+            "name": "province_name",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Province Name",
-              "type": "string",
-              "description": "Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo, Melipilla, Talagante)"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo, Melipilla, Talagante)",
+              "title": "Province Name"
             },
-            "name": "province_name",
-            "in": "query"
+            "description": "Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo, Melipilla, Talagante)"
           }
         ],
         "responses": {
@@ -45,11 +59,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Rm Communes V1 Territories Communes Get",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/CommuneRM"
-                  }
+                  },
+                  "title": "Response Get Rm Communes V1 Territories Communes Get"
                 }
               }
             }
@@ -76,31 +90,31 @@
         "operationId": "get_vector_tile_preview_v1_tiles__z___x___y__json_get",
         "parameters": [
           {
-            "required": true,
-            "schema": {
-              "title": "Z",
-              "type": "integer"
-            },
             "name": "z",
-            "in": "path"
-          },
-          {
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "X",
-              "type": "integer"
-            },
+              "type": "integer",
+              "title": "Z"
+            }
+          },
+          {
             "name": "x",
-            "in": "path"
-          },
-          {
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Y",
-              "type": "integer"
-            },
+              "type": "integer",
+              "title": "X"
+            }
+          },
+          {
             "name": "y",
-            "in": "path"
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Y"
+            }
           }
         ],
         "responses": {
@@ -109,8 +123,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Vector Tile Preview V1 Tiles  Z   X   Y  Json Get",
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Vector Tile Preview V1 Tiles  Z   X   Y  Json Get"
                 }
               }
             }
@@ -137,103 +152,152 @@
         "operationId": "search_assets_v1_assets_get",
         "parameters": [
           {
-            "description": "Código CUT comunal (ej. 13123,13114)",
-            "required": false,
-            "schema": {
-              "title": "Commune Code",
-              "type": "string",
-              "description": "Código CUT comunal (ej. 13123,13114)"
-            },
             "name": "commune_code",
-            "in": "query"
-          },
-          {
-            "description": "min_lng,min_lat,max_lng,max_lat",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Bbox",
-              "type": "string",
-              "description": "min_lng,min_lat,max_lng,max_lat"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Código CUT comunal (ej. 13123,13114)",
+              "title": "Commune Code"
             },
+            "description": "Código CUT comunal (ej. 13123,13114)"
+          },
+          {
             "name": "bbox",
-            "in": "query"
-          },
-          {
-            "description": "lat,lng,radius_m (ej. -33.42628,-70.61094,1000)",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Near",
-              "type": "string",
-              "description": "lat,lng,radius_m (ej. -33.42628,-70.61094,1000)"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "min_lng,min_lat,max_lng,max_lat",
+              "title": "Bbox"
             },
+            "description": "min_lng,min_lat,max_lng,max_lat"
+          },
+          {
             "name": "near",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Structure Category",
-              "enum": [
-                "STREET_FURNITURE",
-                "LARGE_FORMAT_ROADSIDE",
-                "TRANSPORT_NETWORK",
-                "BUILDING_FACADE"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
               ],
-              "type": "string"
+              "description": "lat,lng,radius_m (ej. -33.42628,-70.61094,1000)",
+              "title": "Near"
             },
+            "description": "lat,lng,radius_m (ej. -33.42628,-70.61094,1000)"
+          },
+          {
             "name": "structure_category",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Tech Type",
-              "enum": [
-                "DOOH_LED",
-                "STATIC_BACKLIGHT",
-                "STATIC_PAPER",
-                "TRIVISION"
+              "anyOf": [
+                {
+                  "enum": [
+                    "STREET_FURNITURE",
+                    "LARGE_FORMAT_ROADSIDE",
+                    "TRANSPORT_NETWORK",
+                    "BUILDING_FACADE"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
               ],
-              "type": "string"
-            },
+              "title": "Structure Category"
+            }
+          },
+          {
             "name": "tech_type",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Compliance Status",
-              "enum": [
-                "VERIFIED_LEGAL",
-                "PARTIAL_COMPLIANCE",
-                "UNREGISTERED_CLANDESTINE",
-                "ZONING_VIOLATION_RISK",
-                "EXPIRED_PERMIT"
+              "anyOf": [
+                {
+                  "enum": [
+                    "DOOH_LED",
+                    "STATIC_BACKLIGHT",
+                    "STATIC_PAPER",
+                    "TRIVISION"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
               ],
-              "type": "string"
-            },
+              "title": "Tech Type"
+            }
+          },
+          {
             "name": "compliance_status",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Media Owner Rut",
-              "type": "string"
-            },
+              "anyOf": [
+                {
+                  "enum": [
+                    "VERIFIED_LEGAL",
+                    "PARTIAL_COMPLIANCE",
+                    "UNREGISTERED_CLANDESTINE",
+                    "ZONING_VIOLATION_RISK",
+                    "EXPIRED_PERMIT"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Compliance Status"
+            }
+          },
+          {
             "name": "media_owner_rut",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Format",
-              "pattern": "^(json|geojson)$",
-              "type": "string",
-              "default": "json"
-            },
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Media Owner Rut"
+            }
+          },
+          {
             "name": "format",
-            "in": "query"
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(json|geojson)$",
+              "default": "json",
+              "title": "Format"
+            }
           }
         ],
         "responses": {
@@ -242,7 +306,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Search Assets V1 Assets Get",
                   "anyOf": [
                     {
                       "type": "array",
@@ -253,7 +316,8 @@
                     {
                       "$ref": "#/components/schemas/GeoJSONFeatureCollection"
                     }
-                  ]
+                  ],
+                  "title": "Response Search Assets V1 Assets Get"
                 }
               }
             }
@@ -280,13 +344,13 @@
         "operationId": "get_asset_by_id_v1_assets__asset_id__get",
         "parameters": [
           {
+            "name": "asset_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Asset Id",
-              "type": "string"
-            },
-            "name": "asset_id",
-            "in": "path"
+              "type": "string",
+              "title": "Asset Id"
+            }
           }
         ],
         "responses": {
@@ -322,70 +386,105 @@
         "operationId": "search_faces_v1_faces_search_get",
         "parameters": [
           {
-            "required": false,
-            "schema": {
-              "title": "Commune Code",
-              "type": "string"
-            },
             "name": "commune_code",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Tech Type",
-              "enum": [
-                "DOOH_LED",
-                "STATIC_BACKLIGHT",
-                "STATIC_PAPER",
-                "TRIVISION"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
               ],
-              "type": "string"
-            },
+              "title": "Commune Code"
+            }
+          },
+          {
             "name": "tech_type",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Min Area M2",
-              "minimum": 0.0,
-              "type": "number"
-            },
+              "anyOf": [
+                {
+                  "enum": [
+                    "DOOH_LED",
+                    "STATIC_BACKLIGHT",
+                    "STATIC_PAPER",
+                    "TRIVISION"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Tech Type"
+            }
+          },
+          {
             "name": "min_area_m2",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Max Net Price Clp",
-              "minimum": 0.0,
-              "type": "integer"
-            },
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Min Area M2"
+            }
+          },
+          {
             "name": "max_net_price_clp",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Min Weekly Vac",
-              "minimum": 0.0,
-              "type": "integer"
-            },
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Max Net Price Clp"
+            }
+          },
+          {
             "name": "min_weekly_vac",
-            "in": "query"
-          },
-          {
-            "description": "Excluye activos con riesgo de responsabilidad solidaria Ley 21.473",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Only Verified Legal",
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Min Weekly Vac"
+            }
+          },
+          {
+            "name": "only_verified_legal",
+            "in": "query",
+            "required": false,
+            "schema": {
               "type": "boolean",
               "description": "Excluye activos con riesgo de responsabilidad solidaria Ley 21.473",
-              "default": false
+              "default": false,
+              "title": "Only Verified Legal"
             },
-            "name": "only_verified_legal",
-            "in": "query"
+            "description": "Excluye activos con riesgo de responsabilidad solidaria Ley 21.473"
           }
         ],
         "responses": {
@@ -394,11 +493,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Search Faces V1 Faces Search Get",
                   "type": "array",
                   "items": {
-                    "type": "object"
-                  }
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "title": "Response Search Faces V1 Faces Search Get"
                 }
               }
             }
@@ -425,42 +525,63 @@
         "operationId": "list_compliance_discrepancies_v1_compliance_discrepancies_get",
         "parameters": [
           {
-            "required": false,
-            "schema": {
-              "title": "Commune Code",
-              "type": "string"
-            },
             "name": "commune_code",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Status",
-              "enum": [
-                "VERIFIED_LEGAL",
-                "PARTIAL_COMPLIANCE",
-                "UNREGISTERED_CLANDESTINE",
-                "ZONING_VIOLATION_RISK",
-                "EXPIRED_PERMIT"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
               ],
-              "type": "string"
-            },
+              "title": "Commune Code"
+            }
+          },
+          {
             "name": "status",
-            "in": "query"
-          },
-          {
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Ley 21473 Class",
-              "enum": [
-                "ELEMENTO_MENOR",
-                "ELEMENTO_MAYOR"
+              "anyOf": [
+                {
+                  "enum": [
+                    "VERIFIED_LEGAL",
+                    "PARTIAL_COMPLIANCE",
+                    "UNREGISTERED_CLANDESTINE",
+                    "ZONING_VIOLATION_RISK",
+                    "EXPIRED_PERMIT"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
               ],
-              "type": "string"
-            },
+              "title": "Status"
+            }
+          },
+          {
             "name": "ley_21473_class",
-            "in": "query"
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ELEMENTO_MENOR",
+                    "ELEMENTO_MAYOR"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ley 21473 Class"
+            }
           }
         ],
         "responses": {
@@ -469,9 +590,57 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response List Compliance Discrepancies V1 Compliance Discrepancies Get",
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response List Compliance Discrepancies V1 Compliance Discrepancies Get"
                 }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/compliance/discrepancies/export": {
+      "get": {
+        "tags": [
+          "Auditoría y Fiscalización (Ley N° 21.473)"
+        ],
+        "summary": "Exporta discrepancias detectadas en formato CSV",
+        "operationId": "export_compliance_discrepancies_v1_compliance_discrepancies_export_get",
+        "parameters": [
+          {
+            "name": "commune_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Commune Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           },
@@ -497,13 +666,13 @@
         "operationId": "get_commune_compliance_summary_v1_compliance_communes__commune_code__summary_get",
         "parameters": [
           {
+            "name": "commune_code",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Commune Code",
-              "type": "string"
-            },
-            "name": "commune_code",
-            "in": "path"
+              "type": "string",
+              "title": "Commune Code"
+            }
           }
         ],
         "responses": {
@@ -512,8 +681,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Commune Compliance Summary V1 Compliance Communes  Commune Code  Summary Get",
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Commune Compliance Summary V1 Compliance Communes  Commune Code  Summary Get"
                 }
               }
             }
@@ -595,8 +765,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Process Municipal Batch V1 Ingestion Municipal Batch Post",
-                  "type": "object"
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Process Municipal Batch V1 Ingestion Municipal Batch Post"
                 }
               }
             }
@@ -627,8 +798,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Health Check Health Get",
-                  "type": "object"
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Health Check Health Get"
                 }
               }
             }
@@ -640,52 +812,41 @@
   "components": {
     "schemas": {
       "AssetMetadataInfo": {
-        "title": "AssetMetadataInfo",
+        "properties": {
+          "entity_resolution_confidence": {
+            "type": "number",
+            "title": "Entity Resolution Confidence"
+          },
+          "last_scraped_at": {
+            "type": "string",
+            "title": "Last Scraped At"
+          },
+          "last_audited_at": {
+            "type": "string",
+            "title": "Last Audited At"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/SourceLineageItem"
+            },
+            "type": "array",
+            "title": "Sources"
+          }
+        },
+        "type": "object",
         "required": [
           "entity_resolution_confidence",
           "last_scraped_at",
           "last_audited_at",
           "sources"
         ],
-        "type": "object",
-        "properties": {
-          "entity_resolution_confidence": {
-            "title": "Entity Resolution Confidence",
-            "type": "number"
-          },
-          "last_scraped_at": {
-            "title": "Last Scraped At",
-            "type": "string"
-          },
-          "last_audited_at": {
-            "title": "Last Audited At",
-            "type": "string"
-          },
-          "sources": {
-            "title": "Sources",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SourceLineageItem"
-            }
-          }
-        }
+        "title": "AssetMetadataInfo"
       },
       "AssetRecord": {
-        "title": "AssetRecord",
-        "required": [
-          "asset_id",
-          "location",
-          "structure",
-          "ownership",
-          "faces",
-          "compliance_audit",
-          "metadata"
-        ],
-        "type": "object",
         "properties": {
           "asset_id": {
-            "title": "Asset Id",
-            "type": "string"
+            "type": "string",
+            "title": "Asset Id"
           },
           "location": {
             "$ref": "#/components/schemas/LocationInfo"
@@ -697,11 +858,11 @@
             "$ref": "#/components/schemas/OwnershipInfo"
           },
           "faces": {
-            "title": "Faces",
-            "type": "array",
             "items": {
               "$ref": "#/components/schemas/FaceItem"
-            }
+            },
+            "type": "array",
+            "title": "Faces"
           },
           "compliance_audit": {
             "$ref": "#/components/schemas/ComplianceAuditInfo"
@@ -709,88 +870,199 @@
           "metadata": {
             "$ref": "#/components/schemas/AssetMetadataInfo"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "asset_id",
+          "location",
+          "structure",
+          "ownership",
+          "faces",
+          "compliance_audit",
+          "metadata"
+        ],
+        "title": "AssetRecord"
       },
       "AudienceMetricsInfo": {
-        "title": "AudienceMetricsInfo",
+        "properties": {
+          "uoct_hourly_vehicles_avg": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uoct Hourly Vehicles Avg"
+          },
+          "mop_tmda_daily_vehicles": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mop Tmda Daily Vehicles"
+          },
+          "dtpm_bip_daily_validations": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dtpm Bip Daily Validations"
+          },
+          "sectra_occupancy_factor": {
+            "type": "number",
+            "title": "Sectra Occupancy Factor",
+            "default": 1.42
+          },
+          "weekly_ots_gross": {
+            "type": "integer",
+            "title": "Weekly Ots Gross"
+          },
+          "visibility_index_weight": {
+            "type": "number",
+            "title": "Visibility Index Weight"
+          },
+          "weekly_vac_impacts": {
+            "type": "integer",
+            "title": "Weekly Vac Impacts"
+          },
+          "methodology": {
+            "type": "string",
+            "title": "Methodology",
+            "default": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+          }
+        },
+        "type": "object",
         "required": [
           "weekly_ots_gross",
           "visibility_index_weight",
           "weekly_vac_impacts"
         ],
-        "type": "object",
-        "properties": {
-          "uoct_hourly_vehicles_avg": {
-            "title": "Uoct Hourly Vehicles Avg",
-            "type": "integer"
-          },
-          "mop_tmda_daily_vehicles": {
-            "title": "Mop Tmda Daily Vehicles",
-            "type": "integer"
-          },
-          "dtpm_bip_daily_validations": {
-            "title": "Dtpm Bip Daily Validations",
-            "type": "integer"
-          },
-          "sectra_occupancy_factor": {
-            "title": "Sectra Occupancy Factor",
-            "type": "number",
-            "default": 1.42
-          },
-          "weekly_ots_gross": {
-            "title": "Weekly Ots Gross",
-            "type": "integer"
-          },
-          "visibility_index_weight": {
-            "title": "Visibility Index Weight",
-            "type": "number"
-          },
-          "weekly_vac_impacts": {
-            "title": "Weekly Vac Impacts",
-            "type": "integer"
-          },
-          "methodology": {
-            "title": "Methodology",
-            "type": "string",
-            "default": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
-          }
-        }
+        "title": "AudienceMetricsInfo"
       },
       "CampaignSimulationRequest": {
-        "title": "CampaignSimulationRequest",
+        "properties": {
+          "campaign_name": {
+            "type": "string",
+            "title": "Campaign Name"
+          },
+          "duration_weeks": {
+            "type": "integer",
+            "maximum": 52.0,
+            "minimum": 1.0,
+            "title": "Duration Weeks",
+            "default": 4
+          },
+          "exclude_non_compliant_assets": {
+            "type": "boolean",
+            "title": "Exclude Non Compliant Assets",
+            "default": true
+          },
+          "face_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Face Ids"
+          },
+          "pricing_strategy": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "LIST_PRICE",
+                  "CONSERVATIVE_30PCT",
+                  "MARKET_AVERAGE_42PCT",
+                  "STATE_TENDER_55PCT"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pricing Strategy",
+            "default": "MARKET_AVERAGE_42PCT"
+          }
+        },
+        "type": "object",
         "required": [
           "campaign_name",
           "face_ids"
         ],
-        "type": "object",
-        "properties": {
-          "campaign_name": {
-            "title": "Campaign Name",
-            "type": "string"
-          },
-          "duration_weeks": {
-            "title": "Duration Weeks",
-            "maximum": 52.0,
-            "minimum": 1.0,
-            "type": "integer",
-            "default": 4
-          },
-          "exclude_non_compliant_assets": {
-            "title": "Exclude Non Compliant Assets",
-            "type": "boolean",
-            "default": true
-          },
-          "face_ids": {
-            "title": "Face Ids",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
+        "title": "CampaignSimulationRequest"
       },
       "CampaignSimulationResponse": {
-        "title": "CampaignSimulationResponse",
+        "properties": {
+          "campaign_name": {
+            "type": "string",
+            "title": "Campaign Name"
+          },
+          "total_faces_evaluated": {
+            "type": "integer",
+            "title": "Total Faces Evaluated"
+          },
+          "compliant_faces_approved": {
+            "type": "integer",
+            "title": "Compliant Faces Approved"
+          },
+          "rejected_by_ley_21473_risk": {
+            "type": "integer",
+            "title": "Rejected By Ley 21473 Risk"
+          },
+          "rejected_face_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Rejected Face Ids"
+          },
+          "communes_covered": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Communes Covered"
+          },
+          "total_ots_gross": {
+            "type": "integer",
+            "title": "Total Ots Gross"
+          },
+          "total_vac_impacts": {
+            "type": "integer",
+            "title": "Total Vac Impacts"
+          },
+          "financial_projection_clp": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Financial Projection Clp"
+          },
+          "breakdown_by_commune": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Breakdown By Commune"
+          },
+          "breakdown_by_owner": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Breakdown By Owner"
+          }
+        },
+        "type": "object",
         "required": [
           "campaign_name",
           "total_faces_evaluated",
@@ -802,97 +1074,96 @@
           "total_vac_impacts",
           "financial_projection_clp"
         ],
-        "type": "object",
-        "properties": {
-          "campaign_name": {
-            "title": "Campaign Name",
-            "type": "string"
-          },
-          "total_faces_evaluated": {
-            "title": "Total Faces Evaluated",
-            "type": "integer"
-          },
-          "compliant_faces_approved": {
-            "title": "Compliant Faces Approved",
-            "type": "integer"
-          },
-          "rejected_by_ley_21473_risk": {
-            "title": "Rejected By Ley 21473 Risk",
-            "type": "integer"
-          },
-          "rejected_face_ids": {
-            "title": "Rejected Face Ids",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "communes_covered": {
-            "title": "Communes Covered",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "total_ots_gross": {
-            "title": "Total Ots Gross",
-            "type": "integer"
-          },
-          "total_vac_impacts": {
-            "title": "Total Vac Impacts",
-            "type": "integer"
-          },
-          "financial_projection_clp": {
-            "title": "Financial Projection Clp",
-            "type": "object"
-          }
-        }
+        "title": "CampaignSimulationResponse"
       },
       "CommercialPricingInfo": {
-        "title": "CommercialPricingInfo",
-        "required": [
-          "list_price_clp_monthly",
-          "estimated_net_price_clp",
-          "estimated_annual_municipal_tax_clp"
-        ],
-        "type": "object",
         "properties": {
           "billing_periodicity": {
-            "title": "Billing Periodicity",
+            "type": "string",
             "enum": [
               "MONTHLY",
               "WEEKLY",
               "CAMPAIGN_14D"
             ],
-            "type": "string",
+            "title": "Billing Periodicity",
             "default": "MONTHLY"
           },
           "list_price_clp_monthly": {
-            "title": "List Price Clp Monthly",
-            "type": "integer"
+            "type": "integer",
+            "title": "List Price Clp Monthly"
           },
           "production_cost_clp": {
-            "title": "Production Cost Clp",
             "type": "integer",
+            "title": "Production Cost Clp",
             "default": 0
           },
           "estimated_net_discount_pct": {
-            "title": "Estimated Net Discount Pct",
             "type": "number",
+            "title": "Estimated Net Discount Pct",
             "default": 0.42
           },
           "estimated_net_price_clp": {
-            "title": "Estimated Net Price Clp",
-            "type": "integer"
+            "type": "integer",
+            "title": "Estimated Net Price Clp"
           },
           "estimated_annual_municipal_tax_clp": {
-            "title": "Estimated Annual Municipal Tax Clp",
-            "type": "integer"
+            "type": "integer",
+            "title": "Estimated Annual Municipal Tax Clp"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "list_price_clp_monthly",
+          "estimated_net_price_clp",
+          "estimated_annual_municipal_tax_clp"
+        ],
+        "title": "CommercialPricingInfo"
       },
       "CommuneRM": {
-        "title": "CommuneRM",
+        "properties": {
+          "commune_code": {
+            "type": "string",
+            "title": "Commune Code",
+            "description": "Código Único Territorial CUT (ej. 13123)"
+          },
+          "commune_name": {
+            "type": "string",
+            "title": "Commune Name"
+          },
+          "province_name": {
+            "type": "string",
+            "title": "Province Name"
+          },
+          "ring_tier": {
+            "type": "integer",
+            "maximum": 4.0,
+            "minimum": 1.0,
+            "title": "Ring Tier",
+            "description": "Anillo operativo RM (1 a 4)"
+          },
+          "utm_tax_rate_standard": {
+            "type": "number",
+            "title": "Utm Tax Rate Standard",
+            "description": "Derecho semestral estándar en UTM/m2"
+          },
+          "utm_tax_rate_led": {
+            "type": "number",
+            "title": "Utm Tax Rate Led",
+            "description": "Derecho semestral pantallas LED en UTM/m2"
+          },
+          "gis_rest_endpoint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gis Rest Endpoint"
+          }
+        },
+        "type": "object",
         "required": [
           "commune_code",
           "commune_name",
@@ -901,55 +1172,12 @@
           "utm_tax_rate_standard",
           "utm_tax_rate_led"
         ],
-        "type": "object",
-        "properties": {
-          "commune_code": {
-            "title": "Commune Code",
-            "type": "string",
-            "description": "Código Único Territorial CUT (ej. 13123)"
-          },
-          "commune_name": {
-            "title": "Commune Name",
-            "type": "string"
-          },
-          "province_name": {
-            "title": "Province Name",
-            "type": "string"
-          },
-          "ring_tier": {
-            "title": "Ring Tier",
-            "maximum": 4.0,
-            "minimum": 1.0,
-            "type": "integer",
-            "description": "Anillo operativo RM (1 a 4)"
-          },
-          "utm_tax_rate_standard": {
-            "title": "Utm Tax Rate Standard",
-            "type": "number",
-            "description": "Derecho semestral estándar en UTM/m2"
-          },
-          "utm_tax_rate_led": {
-            "title": "Utm Tax Rate Led",
-            "type": "number",
-            "description": "Derecho semestral pantallas LED en UTM/m2"
-          },
-          "gis_rest_endpoint": {
-            "title": "Gis Rest Endpoint",
-            "type": "string"
-          }
-        }
+        "title": "CommuneRM"
       },
       "ComplianceAuditInfo": {
-        "title": "ComplianceAuditInfo",
-        "required": [
-          "status",
-          "ley_21473_class",
-          "solidary_liability_risk_level"
-        ],
-        "type": "object",
         "properties": {
           "status": {
-            "title": "Status",
+            "type": "string",
             "enum": [
               "VERIFIED_LEGAL",
               "PARTIAL_COMPLIANCE",
@@ -957,138 +1185,195 @@
               "ZONING_VIOLATION_RISK",
               "EXPIRED_PERMIT"
             ],
-            "type": "string"
+            "title": "Status"
           },
           "ley_21473_class": {
-            "title": "Ley 21473 Class",
+            "type": "string",
             "enum": [
               "ELEMENTO_MENOR",
               "ELEMENTO_MAYOR"
             ],
-            "type": "string"
+            "title": "Ley 21473 Class"
           },
           "dom_permit_number": {
-            "title": "Dom Permit Number",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dom Permit Number"
           },
           "dom_authorized_area_m2": {
-            "title": "Dom Authorized Area M2",
-            "type": "number"
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dom Authorized Area M2"
           },
           "municipal_patent_rol": {
-            "title": "Municipal Patent Rol",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Municipal Patent Rol"
           },
           "patent_last_paid_semester": {
-            "title": "Patent Last Paid Semester",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Patent Last Paid Semester"
           },
           "patent_taxed_area_m2": {
-            "title": "Patent Taxed Area M2",
-            "type": "number"
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Patent Taxed Area M2"
           },
           "mop_vialidad_itf_resolution": {
-            "title": "Mop Vialidad Itf Resolution",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mop Vialidad Itf Resolution"
           },
           "mma_ds1_lum_certified": {
-            "title": "Mma Ds1 Lum Certified",
             "type": "boolean",
+            "title": "Mma Ds1 Lum Certified",
             "default": false
           },
           "prc_zone_code": {
-            "title": "Prc Zone Code",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prc Zone Code"
           },
           "is_exclusive_residential": {
-            "title": "Is Exclusive Residential",
             "type": "boolean",
+            "title": "Is Exclusive Residential",
             "default": false
           },
           "distance_to_nearest_hazard_m": {
-            "title": "Distance To Nearest Hazard M",
-            "type": "number"
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance To Nearest Hazard M"
           },
           "permit_expiration_date": {
-            "title": "Permit Expiration Date",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Permit Expiration Date"
           },
           "solidary_liability_risk_level": {
-            "title": "Solidary Liability Risk Level",
+            "type": "string",
             "enum": [
               "LOW",
               "MEDIUM",
               "HIGH",
               "CRITICAL"
             ],
-            "type": "string"
+            "title": "Solidary Liability Risk Level"
           },
           "risk_flags": {
-            "title": "Risk Flags",
-            "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "type": "array",
+            "title": "Risk Flags"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "ley_21473_class",
+          "solidary_liability_risk_level"
+        ],
+        "title": "ComplianceAuditInfo"
       },
       "DimensionsInfo": {
-        "title": "DimensionsInfo",
+        "properties": {
+          "width_m": {
+            "type": "number",
+            "title": "Width M"
+          },
+          "height_m": {
+            "type": "number",
+            "title": "Height M"
+          },
+          "area_m2": {
+            "type": "number",
+            "title": "Area M2"
+          }
+        },
+        "type": "object",
         "required": [
           "width_m",
           "height_m",
           "area_m2"
         ],
-        "type": "object",
-        "properties": {
-          "width_m": {
-            "title": "Width M",
-            "type": "number"
-          },
-          "height_m": {
-            "title": "Height M",
-            "type": "number"
-          },
-          "area_m2": {
-            "title": "Area M2",
-            "type": "number"
-          }
-        }
+        "title": "DimensionsInfo"
       },
       "FaceItem": {
-        "title": "FaceItem",
-        "required": [
-          "face_id",
-          "face_label",
-          "azimuth_degrees",
-          "orientation_cardinal",
-          "traffic_flow_direction",
-          "dimensions",
-          "technology",
-          "audience_metrics",
-          "commercial_pricing"
-        ],
-        "type": "object",
         "properties": {
           "face_id": {
-            "title": "Face Id",
-            "type": "string"
+            "type": "string",
+            "title": "Face Id"
           },
           "face_label": {
-            "title": "Face Label",
-            "type": "string"
+            "type": "string",
+            "title": "Face Label"
           },
           "azimuth_degrees": {
-            "title": "Azimuth Degrees",
-            "type": "integer"
+            "type": "integer",
+            "title": "Azimuth Degrees"
           },
           "orientation_cardinal": {
-            "title": "Orientation Cardinal",
-            "type": "string"
+            "type": "string",
+            "title": "Orientation Cardinal"
           },
           "traffic_flow_direction": {
-            "title": "Traffic Flow Direction",
-            "type": "string"
+            "type": "string",
+            "title": "Traffic Flow Direction"
           },
           "dimensions": {
             "$ref": "#/components/schemas/DimensionsInfo"
@@ -1102,83 +1387,189 @@
           "commercial_pricing": {
             "$ref": "#/components/schemas/CommercialPricingInfo"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "face_id",
+          "face_label",
+          "azimuth_degrees",
+          "orientation_cardinal",
+          "traffic_flow_direction",
+          "dimensions",
+          "technology",
+          "audience_metrics",
+          "commercial_pricing"
+        ],
+        "title": "FaceItem"
       },
       "GeoJSONFeature": {
-        "title": "GeoJSONFeature",
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "Feature",
+            "title": "Type",
+            "default": "Feature"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "geometry": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Geometry"
+          },
+          "properties": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Properties"
+          }
+        },
+        "type": "object",
         "required": [
           "id",
           "geometry",
           "properties"
         ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "title": "Type",
-            "enum": [
-              "Feature"
-            ],
-            "type": "string",
-            "default": "Feature"
-          },
-          "id": {
-            "title": "Id",
-            "type": "string"
-          },
-          "geometry": {
-            "title": "Geometry",
-            "type": "object"
-          },
-          "properties": {
-            "title": "Properties",
-            "type": "object"
-          }
-        }
+        "title": "GeoJSONFeature"
       },
       "GeoJSONFeatureCollection": {
-        "title": "GeoJSONFeatureCollection",
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "FeatureCollection",
+            "title": "Type",
+            "default": "FeatureCollection"
+          },
+          "total_features": {
+            "type": "integer",
+            "title": "Total Features"
+          },
+          "features": {
+            "items": {
+              "$ref": "#/components/schemas/GeoJSONFeature"
+            },
+            "type": "array",
+            "title": "Features"
+          }
+        },
+        "type": "object",
         "required": [
           "total_features",
           "features"
         ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "title": "Type",
-            "enum": [
-              "FeatureCollection"
-            ],
-            "type": "string",
-            "default": "FeatureCollection"
-          },
-          "total_features": {
-            "title": "Total Features",
-            "type": "integer"
-          },
-          "features": {
-            "title": "Features",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GeoJSONFeature"
-            }
-          }
-        }
+        "title": "GeoJSONFeatureCollection"
       },
       "HTTPValidationError": {
-        "title": "HTTPValidationError",
-        "type": "object",
         "properties": {
           "detail": {
-            "title": "Detail",
-            "type": "array",
             "items": {
               "$ref": "#/components/schemas/ValidationError"
-            }
+            },
+            "type": "array",
+            "title": "Detail"
           }
-        }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
       },
       "LocationInfo": {
-        "title": "LocationInfo",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lng": {
+            "type": "number",
+            "title": "Lng"
+          },
+          "utm_x": {
+            "type": "number",
+            "title": "Utm X"
+          },
+          "utm_y": {
+            "type": "number",
+            "title": "Utm Y"
+          },
+          "srid_geographic": {
+            "type": "integer",
+            "title": "Srid Geographic",
+            "default": 4326
+          },
+          "srid_projected": {
+            "type": "integer",
+            "title": "Srid Projected",
+            "default": 32719
+          },
+          "address_raw": {
+            "type": "string",
+            "title": "Address Raw"
+          },
+          "address_normalized": {
+            "type": "string",
+            "title": "Address Normalized"
+          },
+          "sii_parcel_rol": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sii Parcel Rol"
+          },
+          "dtpm_stop_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dtpm Stop Code"
+          },
+          "commune_code": {
+            "type": "string",
+            "title": "Commune Code"
+          },
+          "commune_name": {
+            "type": "string",
+            "title": "Commune Name"
+          },
+          "province_name": {
+            "type": "string",
+            "title": "Province Name"
+          },
+          "region_code": {
+            "type": "string",
+            "title": "Region Code",
+            "default": "RM"
+          },
+          "road_type": {
+            "type": "string",
+            "title": "Road Type"
+          },
+          "highway_kilometer": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Highway Kilometer"
+          },
+          "speed_limit_kmh": {
+            "type": "integer",
+            "title": "Speed Limit Kmh",
+            "default": 50
+          }
+        },
+        "type": "object",
         "required": [
           "lat",
           "lng",
@@ -1191,331 +1582,353 @@
           "province_name",
           "road_type"
         ],
-        "type": "object",
-        "properties": {
-          "lat": {
-            "title": "Lat",
-            "type": "number"
-          },
-          "lng": {
-            "title": "Lng",
-            "type": "number"
-          },
-          "utm_x": {
-            "title": "Utm X",
-            "type": "number"
-          },
-          "utm_y": {
-            "title": "Utm Y",
-            "type": "number"
-          },
-          "srid_geographic": {
-            "title": "Srid Geographic",
-            "type": "integer",
-            "default": 4326
-          },
-          "srid_projected": {
-            "title": "Srid Projected",
-            "type": "integer",
-            "default": 32719
-          },
-          "address_raw": {
-            "title": "Address Raw",
-            "type": "string"
-          },
-          "address_normalized": {
-            "title": "Address Normalized",
-            "type": "string"
-          },
-          "sii_parcel_rol": {
-            "title": "Sii Parcel Rol",
-            "type": "string"
-          },
-          "dtpm_stop_code": {
-            "title": "Dtpm Stop Code",
-            "type": "string"
-          },
-          "commune_code": {
-            "title": "Commune Code",
-            "type": "string"
-          },
-          "commune_name": {
-            "title": "Commune Name",
-            "type": "string"
-          },
-          "province_name": {
-            "title": "Province Name",
-            "type": "string"
-          },
-          "region_code": {
-            "title": "Region Code",
-            "type": "string",
-            "default": "RM"
-          },
-          "road_type": {
-            "title": "Road Type",
-            "type": "string"
-          },
-          "highway_kilometer": {
-            "title": "Highway Kilometer",
-            "type": "number"
-          },
-          "speed_limit_kmh": {
-            "title": "Speed Limit Kmh",
-            "type": "integer",
-            "default": 50
-          }
-        }
+        "title": "LocationInfo"
       },
       "MunicipalBatchIngestRequest": {
-        "title": "MunicipalBatchIngestRequest",
+        "properties": {
+          "commune_code": {
+            "type": "string",
+            "title": "Commune Code"
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "DOM_ART16",
+              "RENTAS_PATENTES"
+            ],
+            "title": "Source Type"
+          },
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalInboundRecord"
+            },
+            "type": "array",
+            "title": "Records"
+          }
+        },
+        "type": "object",
         "required": [
           "commune_code",
           "source_type",
           "records"
         ],
-        "type": "object",
-        "properties": {
-          "commune_code": {
-            "title": "Commune Code",
-            "type": "string"
-          },
-          "source_type": {
-            "title": "Source Type",
-            "enum": [
-              "DOM_ART16",
-              "RENTAS_PATENTES"
-            ],
-            "type": "string"
-          },
-          "records": {
-            "title": "Records",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MunicipalInboundRecord"
-            }
-          }
-        }
+        "title": "MunicipalBatchIngestRequest"
       },
       "MunicipalInboundRecord": {
-        "title": "MunicipalInboundRecord",
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "title": "Record Id"
+          },
+          "address": {
+            "type": "string",
+            "title": "Address"
+          },
+          "sii_parcel_rol": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sii Parcel Rol"
+          },
+          "lat": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lat"
+          },
+          "lng": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lng"
+          },
+          "owner_rut": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Rut"
+          },
+          "owner_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Name"
+          },
+          "structure_type": {
+            "type": "string",
+            "title": "Structure Type",
+            "default": "MONUMENTAL_LED"
+          },
+          "area_m2": {
+            "type": "number",
+            "title": "Area M2"
+          },
+          "dom_permit_number": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dom Permit Number"
+          },
+          "municipal_patent_rol": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Municipal Patent Rol"
+          }
+        },
+        "type": "object",
         "required": [
           "record_id",
           "address",
           "area_m2"
         ],
-        "type": "object",
-        "properties": {
-          "record_id": {
-            "title": "Record Id",
-            "type": "string"
-          },
-          "address": {
-            "title": "Address",
-            "type": "string"
-          },
-          "sii_parcel_rol": {
-            "title": "Sii Parcel Rol",
-            "type": "string"
-          },
-          "lat": {
-            "title": "Lat",
-            "type": "number"
-          },
-          "lng": {
-            "title": "Lng",
-            "type": "number"
-          },
-          "owner_rut": {
-            "title": "Owner Rut",
-            "type": "string"
-          },
-          "owner_name": {
-            "title": "Owner Name",
-            "type": "string"
-          },
-          "structure_type": {
-            "title": "Structure Type",
-            "type": "string",
-            "default": "MONUMENTAL_LED"
-          },
-          "area_m2": {
-            "title": "Area M2",
-            "type": "number"
-          },
-          "dom_permit_number": {
-            "title": "Dom Permit Number",
-            "type": "string"
-          },
-          "municipal_patent_rol": {
-            "title": "Municipal Patent Rol",
-            "type": "string"
-          }
-        }
+        "title": "MunicipalInboundRecord"
       },
       "OwnershipInfo": {
-        "title": "OwnershipInfo",
+        "properties": {
+          "owner_id": {
+            "type": "string",
+            "title": "Owner Id"
+          },
+          "media_owner_name": {
+            "type": "string",
+            "title": "Media Owner Name"
+          },
+          "media_owner_rut": {
+            "type": "string",
+            "title": "Media Owner Rut"
+          },
+          "mop_rnavc_status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "EXPIRED",
+              "NOT_REGISTERED"
+            ],
+            "title": "Mop Rnavc Status"
+          },
+          "commercial_contact": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commercial Contact"
+          },
+          "concession_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Concession Id"
+          },
+          "concession_expiration_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Concession Expiration Date"
+          }
+        },
+        "type": "object",
         "required": [
           "owner_id",
           "media_owner_name",
           "media_owner_rut",
           "mop_rnavc_status"
         ],
-        "type": "object",
-        "properties": {
-          "owner_id": {
-            "title": "Owner Id",
-            "type": "string"
-          },
-          "media_owner_name": {
-            "title": "Media Owner Name",
-            "type": "string"
-          },
-          "media_owner_rut": {
-            "title": "Media Owner Rut",
-            "type": "string"
-          },
-          "mop_rnavc_status": {
-            "title": "Mop Rnavc Status",
-            "enum": [
-              "ACTIVE",
-              "EXPIRED",
-              "NOT_REGISTERED"
-            ],
-            "type": "string"
-          },
-          "commercial_contact": {
-            "title": "Commercial Contact",
-            "type": "string"
-          },
-          "concession_id": {
-            "title": "Concession Id",
-            "type": "string"
-          },
-          "concession_expiration_date": {
-            "title": "Concession Expiration Date",
-            "type": "string"
-          }
-        }
+        "title": "OwnershipInfo"
       },
       "SourceLineageItem": {
-        "title": "SourceLineageItem",
+        "properties": {
+          "source_type": {
+            "type": "string",
+            "title": "Source Type"
+          },
+          "reference_id": {
+            "type": "string",
+            "title": "Reference Id"
+          },
+          "verified_at": {
+            "type": "string",
+            "title": "Verified At"
+          }
+        },
+        "type": "object",
         "required": [
           "source_type",
           "reference_id",
           "verified_at"
         ],
-        "type": "object",
-        "properties": {
-          "source_type": {
-            "title": "Source Type",
-            "type": "string"
-          },
-          "reference_id": {
-            "title": "Reference Id",
-            "type": "string"
-          },
-          "verified_at": {
-            "title": "Verified At",
-            "type": "string"
-          }
-        }
+        "title": "SourceLineageItem"
       },
       "StructureInfo": {
-        "title": "StructureInfo",
-        "required": [
-          "category",
-          "sub_type",
-          "land_regime",
-          "total_height_m"
-        ],
-        "type": "object",
         "properties": {
           "category": {
-            "title": "Category",
+            "type": "string",
             "enum": [
               "STREET_FURNITURE",
               "LARGE_FORMAT_ROADSIDE",
               "TRANSPORT_NETWORK",
               "BUILDING_FACADE"
             ],
-            "type": "string"
+            "title": "Category"
           },
           "sub_type": {
-            "title": "Sub Type",
-            "type": "string"
+            "type": "string",
+            "title": "Sub Type"
           },
           "land_regime": {
-            "title": "Land Regime",
+            "type": "string",
             "enum": [
               "BNUP",
               "PRIVATE_LOT",
               "FISCAL_FENCE"
             ],
-            "type": "string"
+            "title": "Land Regime"
           },
           "total_height_m": {
-            "title": "Total Height M",
-            "type": "number"
+            "type": "number",
+            "title": "Total Height M"
           },
           "installation_date": {
-            "title": "Installation Date",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Installation Date"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "sub_type",
+          "land_regime",
+          "total_height_m"
+        ],
+        "title": "StructureInfo"
       },
       "TechnologyInfo": {
-        "title": "TechnologyInfo",
-        "required": [
-          "type",
-          "illumination"
-        ],
-        "type": "object",
         "properties": {
           "type": {
-            "title": "Type",
+            "type": "string",
             "enum": [
               "DOOH_LED",
               "STATIC_BACKLIGHT",
               "STATIC_PAPER",
               "TRIVISION"
             ],
-            "type": "string"
+            "title": "Type"
           },
           "illumination": {
-            "title": "Illumination",
-            "type": "string"
+            "type": "string",
+            "title": "Illumination"
           },
           "resolution_px": {
-            "title": "Resolution Px",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolution Px"
           },
           "pixel_pitch_mm": {
-            "title": "Pixel Pitch Mm",
-            "type": "number"
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pixel Pitch Mm"
           },
           "slot_duration_sec": {
-            "title": "Slot Duration Sec",
-            "type": "integer"
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slot Duration Sec"
           },
           "loop_slots_total": {
-            "title": "Loop Slots Total",
-            "type": "integer"
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loop Slots Total"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "illumination"
+        ],
+        "title": "TechnologyInfo"
       },
       "ValidationError": {
-        "title": "ValidationError",
-        "required": [
-          "loc",
-          "msg",
-          "type"
-        ],
-        "type": "object",
         "properties": {
           "loc": {
-            "title": "Location",
-            "type": "array",
             "items": {
               "anyOf": [
                 {
@@ -1525,17 +1938,33 @@
                   "type": "integer"
                 }
               ]
-            }
+            },
+            "type": "array",
+            "title": "Location"
           },
           "msg": {
-            "title": "Message",
-            "type": "string"
+            "type": "string",
+            "title": "Message"
           },
           "type": {
-            "title": "Error Type",
-            "type": "string"
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
       }
     }
   }
