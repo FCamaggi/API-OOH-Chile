@@ -67,380 +67,1623 @@ RM_COMMUNES_DATA: list[dict] = [
 
 SEED_ASSETS_DATA: list[dict] = [
     {
-        "asset_id": "CL-RM-PROV-00482",
+        "asset_id": "CL-RM-LAS -1000",
         "location": {
-            "lat": -33.42628,
-            "lng": -70.61094,
-            "utm_x": 350214.5,
-            "utm_y": 6299812.1,
+            "lat": -33.36972893702244,
+            "lng": -70.62277061604019,
+            "utm_x": 346234.0,
+            "utm_y": 6309995.0,
             "srid_geographic": 4326,
             "srid_projected": 32719,
-            "address_raw": "Av. Providencia esq. Ricardo Lyon",
-            "address_normalized": "AVENIDA PROVIDENCIA ESQUINA RICARDO LYON",
-            "sii_parcel_rol": None,
-            "dtpm_stop_code": "PC182",
-            "commune_code": "13123",
-            "commune_name": "Providencia",
-            "province_name": "Santiago",
-            "region_code": "RM",
-            "road_type": "URBAN_ARTERIAL",
-            "highway_kilometer": None,
-            "speed_limit_kmh": 50,
-        },
-        "structure": {
-            "category": "STREET_FURNITURE",
-            "sub_type": "MUPI",
-            "land_regime": "BNUP",
-            "total_height_m": 2.40,
-            "installation_date": "2023-05-12",
-        },
-        "ownership": {
-            "owner_id": "8f14e45f-ceea-467f-a814-2b4d9001c112",
-            "media_owner_name": "JCDecaux Chile S.A.",
-            "media_owner_rut": "96.682.110-4",
-            "mop_rnavc_status": "ACTIVE",
-            "commercial_contact": "comercial@jcdecaux.com",
-            "concession_id": "2455-88-LP22",
-            "concession_expiration_date": "2033-05-12",
-        },
-        "faces": [
-            {
-                "face_id": "CL-RM-PROV-00482-A",
-                "face_label": "Cara A (Flujo Oriente-Poniente)",
-                "azimuth_degrees": 75,
-                "orientation_cardinal": "E",
-                "traffic_flow_direction": "O-P",
-                "dimensions": {"width_m": 1.20, "height_m": 1.75, "area_m2": 2.10},
-                "technology": {
-                    "type": "DOOH_LED",
-                    "illumination": "SELF_EMISSIVE_LED",
-                    "resolution_px": "1080x1920",
-                    "pixel_pitch_mm": 4.0,
-                    "slot_duration_sec": 10,
-                    "loop_slots_total": 6,
-                },
-                "audience_metrics": {
-                    "uoct_hourly_vehicles_avg": 2140,
-                    "mop_tmda_daily_vehicles": None,
-                    "dtpm_bip_daily_validations": 4850,
-                    "sectra_occupancy_factor": 1.42,
-                    "weekly_ots_gross": 428600,
-                    "visibility_index_weight": 0.34,
-                    "weekly_vac_impacts": 145724,
-                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1",
-                },
-                "commercial_pricing": {
-                    "billing_periodicity": "MONTHLY",
-                    "list_price_clp_monthly": 2400000,
-                    "production_cost_clp": 0,
-                    "estimated_net_discount_pct": 0.42,
-                    "estimated_net_price_clp": 1392000,
-                    "estimated_annual_municipal_tax_clp": 1122240,
-                },
-            }
-        ],
-        "compliance_audit": {
-            "status": "VERIFIED_LEGAL",
-            "ley_21473_class": "ELEMENTO_MENOR",
-            "dom_permit_number": "PE-2023-114",
-            "dom_authorized_area_m2": 2.10,
-            "municipal_patent_rol": "400921-K",
-            "patent_last_paid_semester": "2026-S2",
-            "patent_taxed_area_m2": 2.10,
-            "mop_vialidad_itf_resolution": None,
-            "mma_ds1_lum_certified": True,
-            "prc_zone_code": "Z-COM-1",
-            "is_exclusive_residential": False,
-            "distance_to_nearest_hazard_m": 120.0,
-            "permit_expiration_date": "2033-05-12",
-            "solidary_liability_risk_level": "LOW",
-            "risk_flags": [],
-        },
-        "metadata": {
-            "entity_resolution_confidence": 0.96,
-            "last_scraped_at": "2026-10-25T19:00:00Z",
-            "last_audited_at": "2026-10-26T08:00:00Z",
-            "sources": [
-                {"source_type": "DTPM_SHAPEFILE", "reference_id": "STOP_PC182", "verified_at": "2026-10-01T00:00:00Z"},
-                {"source_type": "DOM_ART16_TRANSPARENCIA", "reference_id": "OFICIO-DOM-PROV-2026-08", "verified_at": "2026-10-10T00:00:00Z"},
-            ],
-        },
-    },
-    {
-        "asset_id": "CL-RM-LCON-01120",
-        "location": {
-            "lat": -33.40891,
-            "lng": -70.56721,
-            "utm_x": 354276.8,
-            "utm_y": 6301738.0,
-            "srid_geographic": 4326,
-            "srid_projected": 32719,
-            "address_raw": "Av. Apoquindo 5400 esq. Rosario Norte",
-            "address_normalized": "AVENIDA APOQUINDO 5400 ESQUINA ROSARIO NORTE",
-            "sii_parcel_rol": "01140-00018",
-            "dtpm_stop_code": None,
             "commune_code": "13114",
             "commune_name": "Las Condes",
             "province_name": "Santiago",
             "region_code": "RM",
-            "road_type": "URBAN_ARTERIAL",
-            "highway_kilometer": None,
-            "speed_limit_kmh": 50,
-        },
-        "structure": {
-            "category": "LARGE_FORMAT_ROADSIDE",
-            "sub_type": "MONUMENTAL_LED",
-            "land_regime": "PRIVATE_LOT",
-            "total_height_m": 12.0,
-            "installation_date": "2024-02-15",
-        },
-        "ownership": {
-            "owner_id": "3c91a442-1122-4a91-8899-abc123456789",
-            "media_owner_name": "Clear Channel Chile Publicidad Ltda.",
-            "media_owner_rut": "76.192.410-8",
-            "mop_rnavc_status": "ACTIVE",
-            "commercial_contact": "contacto@clearchannel.cl",
-            "concession_id": None,
-            "concession_expiration_date": None,
-        },
-        "faces": [
-            {
-                "face_id": "CL-RM-LCON-01120-A",
-                "face_label": "Pantalla Digital Monumental Poniente-Oriente",
-                "azimuth_degrees": 255,
-                "orientation_cardinal": "W",
-                "traffic_flow_direction": "P-O",
-                "dimensions": {"width_m": 8.0, "height_m": 4.0, "area_m2": 32.0},
-                "technology": {
-                    "type": "DOOH_LED",
-                    "illumination": "SELF_EMISSIVE_LED",
-                    "resolution_px": "1920x960",
-                    "pixel_pitch_mm": 8.0,
-                    "slot_duration_sec": 10,
-                    "loop_slots_total": 6,
-                },
-                "audience_metrics": {
-                    "uoct_hourly_vehicles_avg": 3420,
-                    "mop_tmda_daily_vehicles": None,
-                    "dtpm_bip_daily_validations": 6120,
-                    "sectra_occupancy_factor": 1.48,
-                    "weekly_ots_gross": 694800,
-                    "visibility_index_weight": 0.52,
-                    "weekly_vac_impacts": 361296,
-                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1",
-                },
-                "commercial_pricing": {
-                    "billing_periodicity": "MONTHLY",
-                    "list_price_clp_monthly": 6800000,
-                    "production_cost_clp": 0,
-                    "estimated_net_discount_pct": 0.40,
-                    "estimated_net_price_clp": 4080000,
-                    "estimated_annual_municipal_tax_clp": 19238400,
-                },
-            }
-        ],
-        "compliance_audit": {
-            "status": "VERIFIED_LEGAL",
-            "ley_21473_class": "ELEMENTO_MAYOR",
-            "dom_permit_number": "OM-LC-2024-089",
-            "dom_authorized_area_m2": 32.0,
-            "municipal_patent_rol": "801442-1",
-            "patent_last_paid_semester": "2026-S2",
-            "patent_taxed_area_m2": 32.0,
-            "mop_vialidad_itf_resolution": "ITF-RM-2024-031",
-            "mma_ds1_lum_certified": True,
-            "prc_zone_code": "UC-1",
-            "is_exclusive_residential": False,
-            "distance_to_nearest_hazard_m": 95.0,
-            "permit_expiration_date": "2029-02-15",
-            "solidary_liability_risk_level": "LOW",
-            "risk_flags": [],
-        },
-        "metadata": {
-            "entity_resolution_confidence": 0.98,
-            "last_scraped_at": "2026-10-25T19:00:00Z",
-            "last_audited_at": "2026-10-26T08:00:00Z",
-            "sources": [
-                {"source_type": "AGGREGATOR_WEB_CATALOG", "reference_id": "OOHPUB_CC_1120", "verified_at": "2026-10-24T00:00:00Z"},
-                {"source_type": "DOM_CATASTRO_DIGITAL", "reference_id": "OM-LC-2024-089", "verified_at": "2026-10-15T00:00:00Z"},
-            ],
-        },
-    },
-    {
-        "asset_id": "CL-RM-HUEC-00109",
-        "location": {
-            "lat": -33.37912,
-            "lng": -70.64108,
-            "utm_x": 347414.5,
-            "utm_y": 6305042.1,
-            "srid_geographic": 4326,
-            "srid_projected": 32719,
-            "address_raw": "Américo Vespucio Norte 1450",
-            "address_normalized": "AMERICO VESPUCIO NORTE 1450",
-            "sii_parcel_rol": "02410-00082",
+            "road_type": "LOCAL",
+            "address_raw": "Avenida Principal 115, Las Condes",
+            "address_normalized": "AV PRINCIPAL 1721",
+            "sii_parcel_rol": "3138-80",
             "dtpm_stop_code": None,
-            "commune_code": "13107",
-            "commune_name": "Huechuraba",
-            "province_name": "Santiago",
-            "region_code": "RM",
-            "road_type": "HIGHWAY_CONCESSION",
-            "highway_kilometer": 9.4,
-            "speed_limit_kmh": 100,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
         },
         "structure": {
-            "category": "LARGE_FORMAT_ROADSIDE",
-            "sub_type": "MONUMENTAL_LED",
-            "land_regime": "PRIVATE_LOT",
-            "total_height_m": 18.0,
-            "installation_date": "2025-01-20",
+            "category": "STREET_FURNITURE",
+            "sub_type": "BUS_STOP_SHELTER",
+            "land_regime": "BNUP",
+            "total_height_m": 6.061848981957727,
+            "installation_date": "2020-01-01"
         },
         "ownership": {
-            "owner_id": "7a88b991-0011-4c22-9911-ff0011223344",
-            "media_owner_name": "Operador Gran Formato Vial SpA",
-            "media_owner_rut": "77.410.892-1",
-            "mop_rnavc_status": "ACTIVE",
-            "commercial_contact": "ventas@granformatovial.cl",
+            "owner_id": "acb2e422-163e-4b7c-a505-b67a99e4356c",
+            "media_owner_rut": "77987654-3",
+            "media_owner_name": "Clear Channel",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
             "concession_id": None,
-            "concession_expiration_date": None,
+            "concession_expiration_date": None
         },
         "faces": [
             {
-                "face_id": "CL-RM-HUEC-00109-A",
-                "face_label": "Cara A Oriente-Poniente (Vespucio Norte)",
-                "azimuth_degrees": 85,
-                "orientation_cardinal": "E",
-                "traffic_flow_direction": "O-P",
-                "dimensions": {"width_m": 12.0, "height_m": 4.0, "area_m2": 48.0},
+                "face_id": "CL-RM-LAS -1000-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
                 "technology": {
-                    "type": "DOOH_LED",
-                    "illumination": "SELF_EMISSIVE_LED",
-                    "resolution_px": "2400x800",
-                    "pixel_pitch_mm": 10.0,
-                    "slot_duration_sec": 10,
-                    "loop_slots_total": 8,
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
                 },
                 "audience_metrics": {
-                    "uoct_hourly_vehicles_avg": None,
-                    "mop_tmda_daily_vehicles": 98500,
-                    "dtpm_bip_daily_validations": None,
-                    "sectra_occupancy_factor": 1.45,
-                    "weekly_ots_gross": 999775,
-                    "visibility_index_weight": 0.44,
-                    "weekly_vac_impacts": 439901,
-                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1",
+                    "uoct_hourly_vehicles_avg": 941,
+                    "mop_tmda_daily_vehicles": 41372,
+                    "dtpm_bip_daily_validations": 14450,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 435222,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 179931,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
                 },
                 "commercial_pricing": {
                     "billing_periodicity": "MONTHLY",
-                    "list_price_clp_monthly": 7500000,
-                    "production_cost_clp": 0,
-                    "estimated_net_discount_pct": 0.45,
-                    "estimated_net_price_clp": 4125000,
-                    "estimated_annual_municipal_tax_clp": 17955840,
-                },
+                    "list_price_clp_monthly": 517441,
+                    "production_cost_clp": 167753,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 300115,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
             }
         ],
         "compliance_audit": {
-            "status": "PARTIAL_COMPLIANCE",
-            "ley_21473_class": "ELEMENTO_MAYOR",
+            "status": "ZONING_VIOLATION_RISK",
+            "ley_21473_class": "ELEMENTO_MENOR",
             "dom_permit_number": None,
             "dom_authorized_area_m2": None,
-            "municipal_patent_rol": "700192-4",
-            "patent_last_paid_semester": "2026-S1",
-            "patent_taxed_area_m2": 24.0,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
             "mop_vialidad_itf_resolution": None,
             "mma_ds1_lum_certified": False,
-            "prc_zone_code": "Z-IND-2",
+            "prc_zone_code": "Z-COM",
             "is_exclusive_residential": False,
-            "distance_to_nearest_hazard_m": 55.0,
+            "distance_to_nearest_hazard_m": 153.07015879321227,
             "permit_expiration_date": None,
             "solidary_liability_risk_level": "HIGH",
             "risk_flags": [
                 "MISSING_DOM_OBRA_MENOR_PERMIT",
                 "AREA_SUBDECLARATION_GT_15PCT",
-                "MISSING_MOP_CONCESSION_INSPECTION_CERT",
-            ],
+                "UNREGISTERED_IN_DOM_AND_RENTAS"
+            ]
         },
         "metadata": {
-            "entity_resolution_confidence": 0.89,
+            "entity_resolution_confidence": 0.95,
             "last_scraped_at": "2026-10-25T19:00:00Z",
             "last_audited_at": "2026-10-26T08:00:00Z",
-            "sources": [
-                {"source_type": "AGGREGATOR_WEB_CATALOG", "reference_id": "OOHPUB_GF_109", "verified_at": "2026-10-24T00:00:00Z"},
-                {"source_type": "RENTAS_PADRON_TRANSPARENCIA", "reference_id": "ROL-700192-4", "verified_at": "2026-10-12T00:00:00Z"},
-            ],
-        },
+            "sources": []
+        }
     },
     {
-        "asset_id": "CL-RM-PUDA-00304",
+        "asset_id": "CL-RM-SANT-1001",
         "location": {
-            "lat": -33.44102,
-            "lng": -70.79120,
-            "utm_x": 333468.2,
-            "utm_y": 6298177.5,
+            "lat": -33.31515460520987,
+            "lng": -70.76776761094662,
+            "utm_x": 353184.0,
+            "utm_y": 6309766.0,
             "srid_geographic": 4326,
             "srid_projected": 32719,
-            "address_raw": "Ruta 68 Km 11.2 Acceso Oriente",
-            "address_normalized": "RUTA 68 KM 11.2 ACCESO ORIENTE",
-            "sii_parcel_rol": "04102-00012",
-            "dtpm_stop_code": None,
-            "commune_code": "13124",
-            "commune_name": "Pudahuel",
+            "commune_code": "13101",
+            "commune_name": "Santiago",
             "province_name": "Santiago",
             "region_code": "RM",
-            "road_type": "INTERURBAN_ROUTE",
-            "highway_kilometer": 11.2,
-            "speed_limit_kmh": 120,
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 6675, Santiago",
+            "address_normalized": "AV PRINCIPAL 6688",
+            "sii_parcel_rol": "7556-10",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
         },
         "structure": {
-            "category": "LARGE_FORMAT_ROADSIDE",
-            "sub_type": "UNIPOLE",
-            "land_regime": "PRIVATE_LOT",
-            "total_height_m": 16.0,
-            "installation_date": "2024-08-10",
+            "category": "STREET_FURNITURE",
+            "sub_type": "BUS_STOP_SHELTER",
+            "land_regime": "BNUP",
+            "total_height_m": 13.3018963916766,
+            "installation_date": "2020-01-01"
         },
         "ownership": {
-            "owner_id": "9900aabb-ccdd-4455-8899-112233445566",
-            "media_owner_name": "Publivía S.A.",
-            "media_owner_rut": "96.510.220-K",
-            "mop_rnavc_status": "ACTIVE",
-            "commercial_contact": "comercial@publivia.cl",
+            "owner_id": "b225dae4-4c81-49c3-a51f-27f0ddf1546b",
+            "media_owner_rut": "96432123-5",
+            "media_owner_name": "Massiva",
+            "mop_rnavc_status": "EXPIRED",
+            "commercial_contact": None,
             "concession_id": None,
-            "concession_expiration_date": None,
+            "concession_expiration_date": None
         },
         "faces": [
             {
-                "face_id": "CL-RM-PUDA-00304-A",
-                "face_label": "Cara A Poniente-Oriente (Hacia Santiago)",
-                "azimuth_degrees": 95,
-                "orientation_cardinal": "E",
-                "traffic_flow_direction": "P-O",
-                "dimensions": {"width_m": 12.0, "height_m": 5.0, "area_m2": 60.0},
+                "face_id": "CL-RM-SANT-1001-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
                 "technology": {
-                    "type": "STATIC_BACKLIGHT",
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 438,
+                    "mop_tmda_daily_vehicles": 2649,
+                    "dtpm_bip_daily_validations": 5055,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 400061,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 96686,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 2525161,
+                    "production_cost_clp": 98922,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1464593,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "PARTIAL_COMPLIANCE",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 130.88311166439155,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "HIGH",
+            "risk_flags": [
+                "MISSING_MUNICIPAL_PATENT_PAYMENT",
+                "UNREGISTERED_IN_DOM_AND_RENTAS"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-MAIP-1002",
+        "location": {
+            "lat": -33.34607867050154,
+            "lng": -70.63631076315883,
+            "utm_x": 340567.0,
+            "utm_y": 6293692.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13119",
+            "commune_name": "Maip\u00fa",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 7816, Maip\u00fa",
+            "address_normalized": "AV PRINCIPAL 3052",
+            "sii_parcel_rol": "9895-67",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "WALL_MURAL",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 8.665768604860123,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "931b1878-91a9-4f2e-85f6-7bc7e5ffb267",
+            "media_owner_rut": "96432123-5",
+            "media_owner_name": "Massiva",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-MAIP-1002-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 860,
+                    "mop_tmda_daily_vehicles": 47742,
+                    "dtpm_bip_daily_validations": 14128,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 236490,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 141767,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 2710682,
+                    "production_cost_clp": 80528,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1572195,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "ZONING_VIOLATION_RISK",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 57.11447152665315,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "CRITICAL",
+            "risk_flags": [
+                "HAZARD_PROXIMITY_LT_40M_DECRETO24",
+                "MISSING_DOM_OBRA_MENOR_PERMIT",
+                "AREA_SUBDECLARATION_GT_15PCT"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-MAIP-1003",
+        "location": {
+            "lat": -33.46486251247197,
+            "lng": -70.58614863530195,
+            "utm_x": 341338.0,
+            "utm_y": 6291622.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13119",
+            "commune_name": "Maip\u00fa",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "LOCAL",
+            "address_raw": "Avenida Principal 5347, Maip\u00fa",
+            "address_normalized": "AV PRINCIPAL 8587",
+            "sii_parcel_rol": "4764-64",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "LARGE_FORMAT_ROADSIDE",
+            "sub_type": "STATIC_BILLBOARD",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 7.180653366922978,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "480323da-7924-401c-8053-111748abe6ad",
+            "media_owner_rut": "78543210-9",
+            "media_owner_name": "Global",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-MAIP-1003-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
                     "illumination": "EXTERNAL_SPOTLIGHT",
                     "resolution_px": None,
                     "pixel_pitch_mm": None,
                     "slot_duration_sec": None,
-                    "loop_slots_total": None,
+                    "loop_slots_total": None
                 },
                 "audience_metrics": {
-                    "uoct_hourly_vehicles_avg": None,
-                    "mop_tmda_daily_vehicles": 74200,
-                    "dtpm_bip_daily_validations": None,
-                    "sectra_occupancy_factor": 1.52,
-                    "weekly_ots_gross": 789488,
-                    "visibility_index_weight": 0.81,
-                    "weekly_vac_impacts": 639485,
-                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1",
+                    "uoct_hourly_vehicles_avg": 1872,
+                    "mop_tmda_daily_vehicles": 37876,
+                    "dtpm_bip_daily_validations": 10467,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 118068,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 34315,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
                 },
                 "commercial_pricing": {
                     "billing_periodicity": "MONTHLY",
-                    "list_price_clp_monthly": 3900000,
-                    "production_cost_clp": 650000,
-                    "estimated_net_discount_pct": 0.38,
-                    "estimated_net_price_clp": 2418000,
-                    "estimated_annual_municipal_tax_clp": 8016000,
+                    "list_price_clp_monthly": 4294219,
+                    "production_cost_clp": 55316,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2490647,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MAYOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 134.7372939046134,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-SAN -1004",
+        "location": {
+            "lat": -33.32134868546958,
+            "lng": -70.50430719098078,
+            "utm_x": 342128.0,
+            "utm_y": 6298785.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13130",
+            "commune_name": "San Miguel",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 3813, San Miguel",
+            "address_normalized": "AV PRINCIPAL 2241",
+            "sii_parcel_rol": "3121-31",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "STREET_FURNITURE",
+            "sub_type": "DIGITAL_MUPI",
+            "land_regime": "BNUP",
+            "total_height_m": 8.416839034364298,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "2674413c-9610-493c-9785-66aa1e4ffbf5",
+            "media_owner_rut": "96432123-5",
+            "media_owner_name": "Massiva",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-SAN -1004-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
                 },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 176,
+                    "mop_tmda_daily_vehicles": 1978,
+                    "dtpm_bip_daily_validations": 13631,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 240554,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 198997,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 781794,
+                    "production_cost_clp": 65852,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 453440,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "PARTIAL_COMPLIANCE",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 119.01228785375366,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "CRITICAL",
+            "risk_flags": [
+                "UNREGISTERED_IN_DOM_AND_RENTAS",
+                "AREA_SUBDECLARATION_GT_15PCT",
+                "MISSING_MOP_ITF_RUTA_68"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-MAIP-1005",
+        "location": {
+            "lat": -33.36160044815573,
+            "lng": -70.70965628978017,
+            "utm_x": 353336.0,
+            "utm_y": 6296337.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13119",
+            "commune_name": "Maip\u00fa",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 946, Maip\u00fa",
+            "address_normalized": "AV PRINCIPAL 1844",
+            "sii_parcel_rol": "9005-93",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "WALL_MURAL",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 3.3584582345585634,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "3ffe2695-dbe0-4104-b776-a5f2b50d08fa",
+            "media_owner_rut": "78543210-9",
+            "media_owner_name": "Global",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-MAIP-1005-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1806,
+                    "mop_tmda_daily_vehicles": 18935,
+                    "dtpm_bip_daily_validations": 11883,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 162867,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 56108,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 2147982,
+                    "production_cost_clp": 83473,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1245829,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 56.8917242937587,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-LA F-1006",
+        "location": {
+            "lat": -33.49733193345172,
+            "lng": -70.52559136986655,
+            "utm_x": 351458.0,
+            "utm_y": 6306323.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13110",
+            "commune_name": "La Florida",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 223, La Florida",
+            "address_normalized": "AV PRINCIPAL 8288",
+            "sii_parcel_rol": "5162-30",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "WALL_MURAL",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 5.8309290129345,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "0bf7c43e-68cd-4829-a477-5533416ff9c7",
+            "media_owner_rut": "78543210-9",
+            "media_owner_name": "Global",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-LA F-1006-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1464,
+                    "mop_tmda_daily_vehicles": 44064,
+                    "dtpm_bip_daily_validations": 1331,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 167307,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 138864,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 3771075,
+                    "production_cost_clp": 145740,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2187223,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 93.41675830345565,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-RECO-1007",
+        "location": {
+            "lat": -33.34144896174905,
+            "lng": -70.58463692768676,
+            "utm_x": 352085.0,
+            "utm_y": 6300375.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13127",
+            "commune_name": "Recoleta",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 1021, Recoleta",
+            "address_normalized": "AV PRINCIPAL 9555",
+            "sii_parcel_rol": "4024-93",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "STREET_FURNITURE",
+            "sub_type": "DIGITAL_MUPI",
+            "land_regime": "BNUP",
+            "total_height_m": 4.699339517505351,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "469d6e17-eba3-4ef7-906a-8790e223a488",
+            "media_owner_rut": "79876543-2",
+            "media_owner_name": "Vallas y Soportes",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-RECO-1007-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 908,
+                    "mop_tmda_daily_vehicles": 42628,
+                    "dtpm_bip_daily_validations": 8576,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 431206,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 95930,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 4171478,
+                    "production_cost_clp": 182889,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2419457,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "ZONING_VIOLATION_RISK",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 55.22410826984011,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "HIGH",
+            "risk_flags": [
+                "MISSING_MOP_ITF_RUTA_68"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-SAN -1008",
+        "location": {
+            "lat": -33.31071157586568,
+            "lng": -70.5961334909422,
+            "utm_x": 347024.0,
+            "utm_y": 6296978.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13130",
+            "commune_name": "San Miguel",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "LOCAL",
+            "address_raw": "Avenida Principal 3766, San Miguel",
+            "address_normalized": "AV PRINCIPAL 2050",
+            "sii_parcel_rol": "9210-80",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "LED_SCREEN",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 7.14327389921303,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "8c0e37e2-f7ff-49fc-90c9-daa3054939fb",
+            "media_owner_rut": "79876543-2",
+            "media_owner_name": "Vallas y Soportes",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-SAN -1008-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": "1920x1080",
+                    "pixel_pitch_mm": 6.0,
+                    "slot_duration_sec": 10,
+                    "loop_slots_total": 6
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 146,
+                    "mop_tmda_daily_vehicles": 43251,
+                    "dtpm_bip_daily_validations": 6687,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 399489,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 220375,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 2968137,
+                    "production_cost_clp": 64243,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1721519,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 144.87161467862097,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-PROV-1009",
+        "location": {
+            "lat": -33.417368798988576,
+            "lng": -70.57823911196002,
+            "utm_x": 348598.0,
+            "utm_y": 6292122.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13123",
+            "commune_name": "Providencia",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "LOCAL",
+            "address_raw": "Avenida Principal 9577, Providencia",
+            "address_normalized": "AV PRINCIPAL 5340",
+            "sii_parcel_rol": "6339-88",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "LED_SCREEN",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 8.953363732195239,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "58eca44c-9735-46e5-8bd4-bac144ed5c8a",
+            "media_owner_rut": "96432123-5",
+            "media_owner_name": "Massiva",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-PROV-1009-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": "1920x1080",
+                    "pixel_pitch_mm": 6.0,
+                    "slot_duration_sec": 10,
+                    "loop_slots_total": 6
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1568,
+                    "mop_tmda_daily_vehicles": 3834,
+                    "dtpm_bip_daily_validations": 5020,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 236883,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 203593,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 4436429,
+                    "production_cost_clp": 113327,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2573128,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "UNREGISTERED_CLANDESTINE",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 143.90159120130528,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "HIGH",
+            "risk_flags": [
+                "HAZARD_PROXIMITY_LT_40M_DECRETO24"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-RECO-1010",
+        "location": {
+            "lat": -33.498274867366,
+            "lng": -70.68450695897899,
+            "utm_x": 350605.0,
+            "utm_y": 6298136.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13127",
+            "commune_name": "Recoleta",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 1547, Recoleta",
+            "address_normalized": "AV PRINCIPAL 3634",
+            "sii_parcel_rol": "3297-47",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "STREET_FURNITURE",
+            "sub_type": "DIGITAL_MUPI",
+            "land_regime": "BNUP",
+            "total_height_m": 11.764936843928325,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "ecac5dd0-10e9-452c-99c6-a6f130d64a6d",
+            "media_owner_rut": "78543210-9",
+            "media_owner_name": "Global",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-RECO-1010-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1699,
+                    "mop_tmda_daily_vehicles": 42733,
+                    "dtpm_bip_daily_validations": 4943,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 130304,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 117955,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 3612116,
+                    "production_cost_clp": 193851,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2095027,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 132.43573092913797,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-COLI-1011",
+        "location": {
+            "lat": -33.487010079455985,
+            "lng": -70.77839855970551,
+            "utm_x": 342516.0,
+            "utm_y": 6304841.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13301",
+            "commune_name": "Colina",
+            "province_name": "Chacabuco",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 3480, Colina",
+            "address_normalized": "AV PRINCIPAL 4937",
+            "sii_parcel_rol": "6794-57",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "LED_SCREEN",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 10.958599355086864,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "719ee3c1-a661-4845-b073-d0f34fcc4b9f",
+            "media_owner_rut": "96432123-5",
+            "media_owner_name": "Massiva",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-COLI-1011-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": "1920x1080",
+                    "pixel_pitch_mm": 6.0,
+                    "slot_duration_sec": 10,
+                    "loop_slots_total": 6
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1210,
+                    "mop_tmda_daily_vehicles": 13979,
+                    "dtpm_bip_daily_validations": 6181,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 470864,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 72615,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 567516,
+                    "production_cost_clp": 154920,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 329159,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "UNREGISTERED_CLANDESTINE",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 94.86094443748787,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "CRITICAL",
+            "risk_flags": [
+                "MISSING_MUNICIPAL_PATENT_PAYMENT",
+                "AREA_SUBDECLARATION_GT_15PCT",
+                "UNREGISTERED_IN_DOM_AND_RENTAS"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-LA F-1012",
+        "location": {
+            "lat": -33.36386601575287,
+            "lng": -70.78702594348323,
+            "utm_x": 352829.0,
+            "utm_y": 6299569.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13110",
+            "commune_name": "La Florida",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 4030, La Florida",
+            "address_normalized": "AV PRINCIPAL 9692",
+            "sii_parcel_rol": "6861-14",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "WALL_MURAL",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 10.105238943922203,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "3d0edb9c-5b77-44e8-bb23-0b3b7c48ca19",
+            "media_owner_rut": "77987654-3",
+            "media_owner_name": "Clear Channel",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-LA F-1012-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "EXTERNAL_SPOTLIGHT",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 188,
+                    "mop_tmda_daily_vehicles": 13364,
+                    "dtpm_bip_daily_validations": 12500,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 435308,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 141134,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 2299741,
+                    "production_cost_clp": 68677,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1333849,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 112.42383522129529,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-MAIP-1013",
+        "location": {
+            "lat": -33.467655115210704,
+            "lng": -70.77425741961052,
+            "utm_x": 348176.0,
+            "utm_y": 6292186.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13119",
+            "commune_name": "Maip\u00fa",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 9768, Maip\u00fa",
+            "address_normalized": "AV PRINCIPAL 2039",
+            "sii_parcel_rol": "9937-60",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "STREET_FURNITURE",
+            "sub_type": "BUS_STOP_SHELTER",
+            "land_regime": "BNUP",
+            "total_height_m": 13.747854837235066,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "e0d793a1-d7f7-49b7-b52c-dad7cc4c2a4b",
+            "media_owner_rut": "77987654-3",
+            "media_owner_name": "Clear Channel",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-MAIP-1013-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "EXTERNAL_SPOTLIGHT",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1822,
+                    "mop_tmda_daily_vehicles": 27862,
+                    "dtpm_bip_daily_validations": 12605,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 48196,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 27539,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 3036084,
+                    "production_cost_clp": 59749,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1760928,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "UNREGISTERED_CLANDESTINE",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 162.74658697697322,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "HIGH",
+            "risk_flags": [
+                "UNREGISTERED_IN_DOM_AND_RENTAS"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-MAIP-1014",
+        "location": {
+            "lat": -33.39768831418826,
+            "lng": -70.7579356109217,
+            "utm_x": 350716.0,
+            "utm_y": 6299987.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13119",
+            "commune_name": "Maip\u00fa",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 5804, Maip\u00fa",
+            "address_normalized": "AV PRINCIPAL 2232",
+            "sii_parcel_rol": "8232-60",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "LED_SCREEN",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 9.076511020997641,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "8e8a9a19-65a9-44bd-b142-a976503d7660",
+            "media_owner_rut": "76123456-K",
+            "media_owner_name": "JCDecaux",
+            "mop_rnavc_status": "EXPIRED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-MAIP-1014-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": "1920x1080",
+                    "pixel_pitch_mm": 6.0,
+                    "slot_duration_sec": 10,
+                    "loop_slots_total": 6
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 1373,
+                    "mop_tmda_daily_vehicles": 24377,
+                    "dtpm_bip_daily_validations": 8001,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 261740,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 117532,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 1544595,
+                    "production_cost_clp": 152525,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 895865,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "ZONING_VIOLATION_RISK",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 70.74382864058552,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "CRITICAL",
+            "risk_flags": [
+                "MISSING_MOP_ITF_RUTA_68",
+                "UNREGISTERED_IN_DOM_AND_RENTAS"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-SAN -1015",
+        "location": {
+            "lat": -33.46875167131505,
+            "lng": -70.74526398474089,
+            "utm_x": 346032.0,
+            "utm_y": 6297862.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13130",
+            "commune_name": "San Miguel",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 7384, San Miguel",
+            "address_normalized": "AV PRINCIPAL 1417",
+            "sii_parcel_rol": "7080-15",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "LARGE_FORMAT_ROADSIDE",
+            "sub_type": "STATIC_BILLBOARD",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 10.791312263102096,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "11ea9c63-93fa-427b-b019-dcce122fa85a",
+            "media_owner_rut": "96432123-5",
+            "media_owner_name": "Massiva",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-SAN -1015-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 337,
+                    "mop_tmda_daily_vehicles": 4230,
+                    "dtpm_bip_daily_validations": 8815,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 278450,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 67670,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 3636226,
+                    "production_cost_clp": 66923,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2109011,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
             }
         ],
         "compliance_audit": {
@@ -450,29 +1693,440 @@ SEED_ASSETS_DATA: list[dict] = [
             "dom_authorized_area_m2": None,
             "municipal_patent_rol": None,
             "patent_last_paid_semester": None,
-            "patent_taxed_area_m2": None,
+            "patent_taxed_area_m2": 0.0,
             "mop_vialidad_itf_resolution": None,
             "mma_ds1_lum_certified": False,
-            "prc_zone_code": "Z-IND-R68",
+            "prc_zone_code": "Z-COM",
             "is_exclusive_residential": False,
-            "distance_to_nearest_hazard_m": 32.0,
+            "distance_to_nearest_hazard_m": 70.3288508538732,
             "permit_expiration_date": None,
             "solidary_liability_risk_level": "CRITICAL",
             "risk_flags": [
-                "UNREGISTERED_IN_DOM_AND_RENTAS",
                 "MISSING_MOP_ITF_RUTA_68",
-                "HAZARD_PROXIMITY_LT_40M_DECRETO24",
-            ],
+                "MISSING_MUNICIPAL_PATENT_PAYMENT",
+                "MISSING_DOM_OBRA_MENOR_PERMIT"
+            ]
         },
         "metadata": {
-            "entity_resolution_confidence": 0.92,
+            "entity_resolution_confidence": 0.95,
             "last_scraped_at": "2026-10-25T19:00:00Z",
             "last_audited_at": "2026-10-26T08:00:00Z",
-            "sources": [
-                {"source_type": "OWNER_KML_LAYER", "reference_id": "R68_KM11_2", "verified_at": "2026-10-20T00:00:00Z"},
-            ],
-        },
+            "sources": []
+        }
     },
+    {
+        "asset_id": "CL-RM-SAN -1016",
+        "location": {
+            "lat": -33.37418901348232,
+            "lng": -70.76148777842235,
+            "utm_x": 343736.0,
+            "utm_y": 6294404.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13130",
+            "commune_name": "San Miguel",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "LOCAL",
+            "address_raw": "Avenida Principal 6483, San Miguel",
+            "address_normalized": "AV PRINCIPAL 3231",
+            "sii_parcel_rol": "7169-13",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "LED_SCREEN",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 11.710637128616924,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "e77757d3-daff-4736-b95a-72a294d30435",
+            "media_owner_rut": "77987654-3",
+            "media_owner_name": "Clear Channel",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-SAN -1016-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": "1920x1080",
+                    "pixel_pitch_mm": 6.0,
+                    "slot_duration_sec": 10,
+                    "loop_slots_total": 6
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 963,
+                    "mop_tmda_daily_vehicles": 45774,
+                    "dtpm_bip_daily_validations": 6337,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 298468,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 238345,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 3527951,
+                    "production_cost_clp": 67167,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2046211,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "ZONING_VIOLATION_RISK",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 112.52923985002457,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "HIGH",
+            "risk_flags": [
+                "MISSING_DOM_OBRA_MENOR_PERMIT",
+                "AREA_SUBDECLARATION_GT_15PCT",
+                "MISSING_MOP_ITF_RUTA_68"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-SAN -1017",
+        "location": {
+            "lat": -33.46687463219706,
+            "lng": -70.6869899169506,
+            "utm_x": 351815.0,
+            "utm_y": 6306813.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13401",
+            "commune_name": "San Bernardo",
+            "province_name": "Maipo",
+            "region_code": "RM",
+            "road_type": "HIGHWAY",
+            "address_raw": "Avenida Principal 1468, San Bernardo",
+            "address_normalized": "AV PRINCIPAL 2280",
+            "sii_parcel_rol": "1064-86",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "STREET_FURNITURE",
+            "sub_type": "BUS_STOP_SHELTER",
+            "land_regime": "BNUP",
+            "total_height_m": 4.654308027236593,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "054129c8-a6bc-419f-a37d-7ffd795663f0",
+            "media_owner_rut": "77987654-3",
+            "media_owner_name": "Clear Channel",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-SAN -1017-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 536,
+                    "mop_tmda_daily_vehicles": 8644,
+                    "dtpm_bip_daily_validations": 8389,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 357614,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 122574,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 1101738,
+                    "production_cost_clp": 111977,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 639008,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "UNREGISTERED_CLANDESTINE",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 157.54161501243294,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "CRITICAL",
+            "risk_flags": [
+                "MISSING_MOP_ITF_RUTA_68"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-SAN -1018",
+        "location": {
+            "lat": -33.47661123737469,
+            "lng": -70.56736398910742,
+            "utm_x": 356479.0,
+            "utm_y": 6293037.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13130",
+            "commune_name": "San Miguel",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 7907, San Miguel",
+            "address_normalized": "AV PRINCIPAL 6421",
+            "sii_parcel_rol": "2256-81",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "STREET_FURNITURE",
+            "sub_type": "BUS_STOP_SHELTER",
+            "land_regime": "BNUP",
+            "total_height_m": 9.377634958535396,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "53c4ba7e-df66-493a-bf6c-7abefbeceece",
+            "media_owner_rut": "79876543-2",
+            "media_owner_name": "Vallas y Soportes",
+            "mop_rnavc_status": "NOT_REGISTERED",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-SAN -1018-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "STATIC_PAPER",
+                    "illumination": "UNILLUMINATED",
+                    "resolution_px": None,
+                    "pixel_pitch_mm": None,
+                    "slot_duration_sec": None,
+                    "loop_slots_total": None
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 914,
+                    "mop_tmda_daily_vehicles": 33650,
+                    "dtpm_bip_daily_validations": 12432,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 378934,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 11098,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 2604548,
+                    "production_cost_clp": 54905,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 1510637,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "ZONING_VIOLATION_RISK",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": None,
+            "dom_authorized_area_m2": None,
+            "municipal_patent_rol": None,
+            "patent_last_paid_semester": None,
+            "patent_taxed_area_m2": 0.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": False,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 81.09332494190687,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "HIGH",
+            "risk_flags": [
+                "UNREGISTERED_IN_DOM_AND_RENTAS",
+                "MISSING_MUNICIPAL_PATENT_PAYMENT"
+            ]
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    },
+    {
+        "asset_id": "CL-RM-LA F-1019",
+        "location": {
+            "lat": -33.40497919708617,
+            "lng": -70.77131207159634,
+            "utm_x": 350920.0,
+            "utm_y": 6293005.0,
+            "srid_geographic": 4326,
+            "srid_projected": 32719,
+            "commune_code": "13110",
+            "commune_name": "La Florida",
+            "province_name": "Santiago",
+            "region_code": "RM",
+            "road_type": "ARTERIAL",
+            "address_raw": "Avenida Principal 6379, La Florida",
+            "address_normalized": "AV PRINCIPAL 8140",
+            "sii_parcel_rol": "4564-55",
+            "dtpm_stop_code": None,
+            "highway_kilometer": None,
+            "speed_limit_kmh": 50
+        },
+        "structure": {
+            "category": "BUILDING_FACADE",
+            "sub_type": "LED_SCREEN",
+            "land_regime": "PRIVATE_LOT",
+            "total_height_m": 9.665944341642415,
+            "installation_date": "2020-01-01"
+        },
+        "ownership": {
+            "owner_id": "f287ca99-8412-4fd6-8514-d1804ed7e8a6",
+            "media_owner_rut": "76123456-K",
+            "media_owner_name": "JCDecaux",
+            "mop_rnavc_status": "ACTIVE",
+            "commercial_contact": None,
+            "concession_id": None,
+            "concession_expiration_date": None
+        },
+        "faces": [
+            {
+                "face_id": "CL-RM-LA F-1019-F1",
+                "face_label": "Norte",
+                "azimuth_degrees": 0,
+                "orientation_cardinal": "N",
+                "traffic_flow_direction": "S-N",
+                "dimensions": {
+                    "width_m": 3.0,
+                    "height_m": 2.0,
+                    "area_m2": 6.0
+                },
+                "technology": {
+                    "type": "DOOH_LED",
+                    "illumination": "SELF_EMISSIVE_LED",
+                    "resolution_px": "1920x1080",
+                    "pixel_pitch_mm": 6.0,
+                    "slot_duration_sec": 10,
+                    "loop_slots_total": 6
+                },
+                "audience_metrics": {
+                    "uoct_hourly_vehicles_avg": 398,
+                    "mop_tmda_daily_vehicles": 36213,
+                    "dtpm_bip_daily_validations": 3448,
+                    "sectra_occupancy_factor": 1.42,
+                    "weekly_ots_gross": 138287,
+                    "visibility_index_weight": 0.8,
+                    "weekly_vac_impacts": 148590,
+                    "methodology": "OPEN_SYNTHETIC_UOCT_ADATRAP_V1"
+                },
+                "commercial_pricing": {
+                    "billing_periodicity": "MONTHLY",
+                    "list_price_clp_monthly": 3885990,
+                    "production_cost_clp": 104856,
+                    "estimated_net_discount_pct": 0.42,
+                    "estimated_net_price_clp": 2253874,
+                    "estimated_annual_municipal_tax_clp": 780000
+                }
+            }
+        ],
+        "compliance_audit": {
+            "status": "VERIFIED_LEGAL",
+            "ley_21473_class": "ELEMENTO_MENOR",
+            "dom_permit_number": "123/2020",
+            "dom_authorized_area_m2": 6.0,
+            "municipal_patent_rol": "456-789",
+            "patent_last_paid_semester": "2026-S1",
+            "patent_taxed_area_m2": 6.0,
+            "mop_vialidad_itf_resolution": None,
+            "mma_ds1_lum_certified": True,
+            "prc_zone_code": "Z-COM",
+            "is_exclusive_residential": False,
+            "distance_to_nearest_hazard_m": 135.15633701142792,
+            "permit_expiration_date": None,
+            "solidary_liability_risk_level": "LOW",
+            "risk_flags": []
+        },
+        "metadata": {
+            "entity_resolution_confidence": 0.95,
+            "last_scraped_at": "2026-10-25T19:00:00Z",
+            "last_audited_at": "2026-10-26T08:00:00Z",
+            "sources": []
+        }
+    }
 ]
 
 
