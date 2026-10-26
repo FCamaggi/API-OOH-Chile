@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 from app.config import settings
 from app.data.seed_rm import repo
 from app.routers import assets, campaigns, compliance, faces, ingestion, territories
@@ -39,3 +42,12 @@ def health_check() -> dict:
         "rm_communes_loaded": len(repo.communes),
         "seed_assets_loaded": len(repo.assets),
     }
+
+frontend_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "dist")
+if os.path.isdir(frontend_dir):
+
+    @app.get("/")
+    def serve_frontend():
+        return FileResponse(os.path.join(frontend_dir, "index.html"))
+
+    app.mount("/", StaticFiles(directory=frontend_dir), name="frontend")
