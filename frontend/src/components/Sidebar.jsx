@@ -2,7 +2,9 @@ import React from 'react';
 import {
   formatComplianceStatus,
   formatStructureCategory,
+  formatStructureSubType,
   formatTechType,
+  formatIllumination,
   formatRiskFlag
 } from '../utils/formatters';
 
@@ -39,7 +41,7 @@ export default function Sidebar({ asset, onClose }) {
         <div style={{ marginBottom: '15px' }}>
           <h3>Estructura</h3>
           <div><strong>Categoría:</strong> {formatStructureCategory(asset.structure.category || asset.structure_category)}</div>
-          <div><strong>Subtipo:</strong> {asset.structure.sub_type || asset.sub_type}</div>
+          <div><strong>Subtipo:</strong> {formatStructureSubType(asset.structure.sub_type || asset.sub_type)}</div>
         </div>
       )}
 
@@ -101,7 +103,7 @@ export default function Sidebar({ asset, onClose }) {
           {asset.faces.map(face => (
             <div key={face.face_id} style={{ border: '1px solid #ddd', padding: '10px', marginBottom: '10px', borderRadius: '6px', background: 'white' }}>
               <div><strong>Orientación:</strong> {face.face_label}</div>
-              <div><strong>Tecnología:</strong> {formatTechType(face.technology.type)} ({face.technology.illumination})</div>
+              <div><strong>Tecnología:</strong> {formatTechType(face.technology.type)} ({formatIllumination(face.technology.illumination)})</div>
               <div><strong>Dimensiones:</strong> {face.dimensions.width_m}m x {face.dimensions.height_m}m ({face.dimensions.area_m2} m²)</div>
               {face.commercial_pricing && (
                 <div style={{ marginTop: '5px', fontSize: '0.9em', color: '#555' }}>
