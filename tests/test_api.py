@@ -81,6 +81,7 @@ def test_campaign_simulation_excludes_non_compliant_assets() -> None:
             "CL-RM-LCON-01120-A",
             "CL-RM-PUDA-00304-A",  # Clandestino -> debe ser rechazado por Art. 31 Ley 21.473
         ],
+        "pricing_strategy": "CONSERVATIVE_30PCT"
     }
     resp = client.post("/v1/campaigns/simulate", json=payload)
     assert resp.status_code == 200
@@ -89,7 +90,46 @@ def test_campaign_simulation_excludes_non_compliant_assets() -> None:
     assert sim["compliant_faces_approved"] == 2
     assert sim["rejected_by_ley_21473_risk"] == 1
     assert "CL-RM-PUDA-00304-A" in sim["rejected_face_ids"]
-    assert sim["financial_projection_clp"]["total_estimated_net_investment_clp"] > 0
+
+    finances = sim["financial_projection_clp"]
+    assert finances["total_estimated_net_investment_clp"] > 0
+    assert abs(finances["estimated_negotiated_discount_pct"] - 0.30) < 0.01
+
+    assert "breakdown_by_commune" in sim
+    assert len(sim["breakdown_by_commune"]) == 2
+    assert any(b["commune_name"] == "Providencia" for b in sim["breakdown_by_commune"])
+
+    assert "breakdown_by_owner" in sim
+    assert len(sim["breakdown_by_owner"]) > 0
+
+def test_campaign_simulation_pricing_strategies() -> None:
+    face_ids = ["CL-RM-PROV-00482-A", "CL-RM-LCON-01120-A"]
+
+    def simulate_with_strategy(strategy: str) -> dict:
+        return client.post("/v1/campaigns/simulate", json={
+            "campaign_name": "Test",
+            "duration_weeks": 4,
+            "face_ids": face_ids,
+            "pricing_strategy": strategy
+        }).json()
+
+    sim_list = simulate_with_strategy("LIST_PRICE")
+    sim_30 = simulate_with_strategy("CONSERVATIVE_30PCT")
+    sim_42 = simulate_with_strategy("MARKET_AVERAGE_42PCT")
+    sim_55 = simulate_with_strategy("STATE_TENDER_55PCT")
+
+    list_price = sim_list["financial_projection_clp"]["total_list_price_clp"]
+
+    assert sim_list["financial_projection_clp"]["estimated_negotiated_discount_pct"] == 0.0
+    assert sim_list["financial_projection_clp"]["estimated_net_media_cost_clp"] == list_price
+
+    assert abs(sim_30["financial_projection_clp"]["estimated_negotiated_discount_pct"] - 0.30) < 0.01
+    assert abs(sim_42["financial_projection_clp"]["estimated_negotiated_discount_pct"] - 0.42) < 0.01
+    assert abs(sim_55["financial_projection_clp"]["estimated_negotiated_discount_pct"] - 0.55) < 0.01
+
+    assert sim_55["financial_projection_clp"]["estimated_net_media_cost_clp"] < sim_42["financial_projection_clp"]["estimated_net_media_cost_clp"]
+    assert sim_42["financial_projection_clp"]["estimated_net_media_cost_clp"] < sim_30["financial_projection_clp"]["estimated_net_media_cost_clp"]
+    assert sim_30["financial_projection_clp"]["estimated_net_media_cost_clp"] < list_price
 
 
 def test_spatial_entity_resolution_and_subdeclaration_detection() -> None:

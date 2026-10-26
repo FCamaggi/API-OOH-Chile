@@ -176,11 +176,15 @@ class GeoJSONFeatureCollection(BaseModel):
     features: list[GeoJSONFeature]
 
 
+PricingStrategy = Literal["LIST_PRICE", "CONSERVATIVE_30PCT", "MARKET_AVERAGE_42PCT", "STATE_TENDER_55PCT"]
+
+
 class CampaignSimulationRequest(BaseModel):
     campaign_name: str
     duration_weeks: int = Field(default=4, ge=1, le=52)
     exclude_non_compliant_assets: bool = True
     face_ids: list[str]
+    pricing_strategy: Optional[PricingStrategy] = "MARKET_AVERAGE_42PCT"
 
 
 class CampaignSimulationResponse(BaseModel):
@@ -193,6 +197,8 @@ class CampaignSimulationResponse(BaseModel):
     total_ots_gross: int
     total_vac_impacts: int
     financial_projection_clp: dict[str, Any]
+    breakdown_by_commune: list[dict[str, Any]] = Field(default_factory=list)
+    breakdown_by_owner: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class MunicipalInboundRecord(BaseModel):
