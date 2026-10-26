@@ -1,5 +1,8 @@
+import io
+import csv
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from app.config import settings
 from app.data.seed_rm import repo
 from app.schemas import ComplianceStatus, Ley21473Class
@@ -73,6 +76,70 @@ def list_compliance_discrepancies(
         },
         "items": discrepancies,
     }
+
+
+@router.get(
+    "/discrepancies/export",
+    summary="Exporta discrepancias detectadas en formato CSV",
+)
+def export_compliance_discrepancies(
+    commune_code: Optional[str] = Query(default=None),
+) -> StreamingResponse:
+    discrepancies = []
+
+    for asset in repo.list_assets():
+        if asset.compliance_audit.status == "VERIFIED_LEGAL":
+            continue
+        if commune_code and asset.location.commune_code != commune_code:
+            continue
+
+        commercial_area = sum(f.dimensions.area_m2 for f in asset.faces)
+        taxed_area = asset.compliance_audit.patent_taxed_area_m2 or 0.0
+        undeclared_area = max(0.0, round(commercial_area - taxed_area, 2))
+        risk_flags_str = "|".join(asset.compliance_audit.risk_flags) if asset.compliance_audit.risk_flags else ""
+
+        discrepancies.append(
+            {
+                "asset_id": asset.asset_id,
+                "commune_name": asset.location.commune_name,
+                "address_normalized": asset.location.address_normalized,
+                "media_owner_name": asset.ownership.media_owner_name,
+                "compliance_status": asset.compliance_audit.status,
+                "commercial_area_m2": commercial_area,
+                "patent_taxed_area_m2": taxed_area,
+                "undeclared_area_m2": undeclared_area,
+                "risk_flags": risk_flags_str,
+            }
+        )
+
+    output = io.StringIO()
+    writer = csv.DictWriter(
+        output,
+        fieldnames=[
+            "asset_id",
+            "commune_name",
+            "address_normalized",
+            "media_owner_name",
+            "compliance_status",
+            "commercial_area_m2",
+            "patent_taxed_area_m2",
+            "undeclared_area_m2",
+            "risk_flags",
+        ],
+    )
+    writer.writeheader()
+    writer.writerows(discrepancies)
+
+    # Seek to start
+    output.seek(0)
+
+    return StreamingResponse(
+        iter([output.getvalue()]),
+        media_type="text/csv",
+        headers={
+            "Content-Disposition": f"attachment; filename=discrepancies_{commune_code or 'ALL'}.csv"
+        }
+    )
 
 
 @router.get(

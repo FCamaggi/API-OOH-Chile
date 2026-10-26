@@ -59,6 +59,18 @@ def test_compliance_discrepancies_ley_21473() -> None:
     assert "AREA_SUBDECLARATION_GT_15PCT" in item["discrepancy_details"]["risk_flags"]
 
 
+def test_export_compliance_discrepancies_csv() -> None:
+    resp = client.get("/v1/compliance/discrepancies/export?commune_code=13107")
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == "text/csv; charset=utf-8"
+    assert 'filename=discrepancies_13107.csv' in resp.headers["content-disposition"]
+
+    csv_content = resp.text
+    assert "asset_id,commune_name,address_normalized,media_owner_name,compliance_status,commercial_area_m2,patent_taxed_area_m2,undeclared_area_m2,risk_flags" in csv_content
+    assert "CL-RM-HUEC-00109" in csv_content
+    assert "AREA_SUBDECLARATION_GT_15PCT" in csv_content
+
+
 def test_campaign_simulation_excludes_non_compliant_assets() -> None:
     payload = {
         "campaign_name": "Campaña RM Q4",
@@ -134,6 +146,9 @@ class TestAPIOOHChile(unittest.TestCase):
 
     def test_04_compliance_discrepancies_ley_21473(self) -> None:
         test_compliance_discrepancies_ley_21473()
+
+    def test_04b_export_compliance_discrepancies_csv(self) -> None:
+        test_export_compliance_discrepancies_csv()
 
     def test_05_campaign_simulation(self) -> None:
         test_campaign_simulation_excludes_non_compliant_assets()
