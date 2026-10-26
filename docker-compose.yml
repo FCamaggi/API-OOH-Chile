@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    container_name: ooh-rm-postgis
+    environment:
+      POSTGRES_USER: ooh_user
+      POSTGRES_PASSWORD: ooh_pass
+      POSTGRES_DB: ooh_rm_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migrations/001_init_postgis_rm.sql:/docker-entrypoint-initdb.d/001_init_postgis_rm.sql:ro
+      - postgis_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: ooh-rm-redis
+    ports:
+      - "6379:6379"
+
+  api:
+    build: .
+    container_name: ooh-rm-api
+    environment:
+      USE_IN_MEMORY_DB: "true"
+      DATABASE_URL: "postgresql+psycopg://ooh_user:ooh_pass@postgis:5432/ooh_rm_db"
+      UTM_VALUE_CLP: "66800"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgis
+      - redis
+
+volumes:
+  postgis_data:

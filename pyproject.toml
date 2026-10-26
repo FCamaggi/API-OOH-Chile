@@ -1,0 +1,18 @@
+[project]
+name = "api-ooh-chile"
+version = "1.0.0"
+description = "Plataforma API-First de Inventario Geoespacial, Planificación y Auditoría OOH/DOOH (Región Metropolitana)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.109.0",
+    "pydantic>=2.5.0",
+    "uvicorn>=0.27.0",
+    "httpx>=0.26.0",
+    "pyyaml>=6.0.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

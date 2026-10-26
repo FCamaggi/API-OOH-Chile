@@ -1,0 +1,1113 @@
+openapi: 3.0.2
+info:
+  title: API-OOH-Chile — Plataforma Geoespacial y Auditoría OOH/DOOH (RM)
+  description: Plataforma API-First de Inteligencia Geoespacial, Planificación Comercial
+    y Fiscalización Normativa (Ley N° 21.473) para el inventario OOH y DOOH en las
+    52 comunas de la Región Metropolitana de Santiago.
+  version: 1.0.0
+paths:
+  /v1/territories/communes:
+    get:
+      tags:
+      - Territorios y Capas Base RM
+      summary: Lista las 52 comunas de la Región Metropolitana con sus anillos y tasas
+        UTM/m2
+      operationId: get_rm_communes_v1_territories_communes_get
+      parameters:
+      - description: Filtrar por Anillo Operativo RM (1 a 4)
+        required: false
+        schema:
+          title: Ring Tier
+          maximum: 4.0
+          minimum: 1.0
+          type: integer
+          description: Filtrar por Anillo Operativo RM (1 a 4)
+        name: ring_tier
+        in: query
+      - description: Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo,
+          Melipilla, Talagante)
+        required: false
+        schema:
+          title: Province Name
+          type: string
+          description: Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo,
+            Melipilla, Talagante)
+        name: province_name
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Rm Communes V1 Territories Communes Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommuneRM'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/tiles/{z}/{x}/{y}.json:
+    get:
+      tags:
+      - Territorios y Capas Base RM
+      summary: Descriptor ligero de Vector Tiles (MVT) para el futuro visor cartográfico
+      operationId: get_vector_tile_preview_v1_tiles__z___x___y__json_get
+      parameters:
+      - required: true
+        schema:
+          title: Z
+          type: integer
+        name: z
+        in: path
+      - required: true
+        schema:
+          title: X
+          type: integer
+        name: x
+        in: path
+      - required: true
+        schema:
+          title: Y
+          type: integer
+        name: y
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Vector Tile Preview V1 Tiles  Z   X   Y  Json
+                  Get
+                type: object
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/assets:
+    get:
+      tags:
+      - Inventario Físico (Assets)
+      summary: Búsqueda geoespacial y multicriterio de estructuras OOH/DOOH en las
+        52 comunas RM
+      operationId: search_assets_v1_assets_get
+      parameters:
+      - description: Código CUT comunal (ej. 13123,13114)
+        required: false
+        schema:
+          title: Commune Code
+          type: string
+          description: Código CUT comunal (ej. 13123,13114)
+        name: commune_code
+        in: query
+      - description: min_lng,min_lat,max_lng,max_lat
+        required: false
+        schema:
+          title: Bbox
+          type: string
+          description: min_lng,min_lat,max_lng,max_lat
+        name: bbox
+        in: query
+      - description: lat,lng,radius_m (ej. -33.42628,-70.61094,1000)
+        required: false
+        schema:
+          title: Near
+          type: string
+          description: lat,lng,radius_m (ej. -33.42628,-70.61094,1000)
+        name: near
+        in: query
+      - required: false
+        schema:
+          title: Structure Category
+          enum:
+          - STREET_FURNITURE
+          - LARGE_FORMAT_ROADSIDE
+          - TRANSPORT_NETWORK
+          - BUILDING_FACADE
+          type: string
+        name: structure_category
+        in: query
+      - required: false
+        schema:
+          title: Tech Type
+          enum:
+          - DOOH_LED
+          - STATIC_BACKLIGHT
+          - STATIC_PAPER
+          - TRIVISION
+          type: string
+        name: tech_type
+        in: query
+      - required: false
+        schema:
+          title: Compliance Status
+          enum:
+          - VERIFIED_LEGAL
+          - PARTIAL_COMPLIANCE
+          - UNREGISTERED_CLANDESTINE
+          - ZONING_VIOLATION_RISK
+          - EXPIRED_PERMIT
+          type: string
+        name: compliance_status
+        in: query
+      - required: false
+        schema:
+          title: Media Owner Rut
+          type: string
+        name: media_owner_rut
+        in: query
+      - required: false
+        schema:
+          title: Format
+          pattern: ^(json|geojson)$
+          type: string
+          default: json
+        name: format
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Search Assets V1 Assets Get
+                anyOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/AssetRecord'
+                - $ref: '#/components/schemas/GeoJSONFeatureCollection'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/assets/{asset_id}:
+    get:
+      tags:
+      - Inventario Físico (Assets)
+      summary: Obtiene la ficha maestra tricapa (Asset + Faces + Compliance) de un
+        soporte físico
+      operationId: get_asset_by_id_v1_assets__asset_id__get
+      parameters:
+      - required: true
+        schema:
+          title: Asset Id
+          type: string
+        name: asset_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetRecord'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/faces/search:
+    get:
+      tags:
+      - Caras Publicitarias y Planificación (Faces)
+      summary: Buscador de caras publicitarias para compra de medios con métricas
+        OTS/VAC y tarifas netas
+      operationId: search_faces_v1_faces_search_get
+      parameters:
+      - required: false
+        schema:
+          title: Commune Code
+          type: string
+        name: commune_code
+        in: query
+      - required: false
+        schema:
+          title: Tech Type
+          enum:
+          - DOOH_LED
+          - STATIC_BACKLIGHT
+          - STATIC_PAPER
+          - TRIVISION
+          type: string
+        name: tech_type
+        in: query
+      - required: false
+        schema:
+          title: Min Area M2
+          minimum: 0.0
+          type: number
+        name: min_area_m2
+        in: query
+      - required: false
+        schema:
+          title: Max Net Price Clp
+          minimum: 0.0
+          type: integer
+        name: max_net_price_clp
+        in: query
+      - required: false
+        schema:
+          title: Min Weekly Vac
+          minimum: 0.0
+          type: integer
+        name: min_weekly_vac
+        in: query
+      - description: Excluye activos con riesgo de responsabilidad solidaria Ley 21.473
+        required: false
+        schema:
+          title: Only Verified Legal
+          type: boolean
+          description: Excluye activos con riesgo de responsabilidad solidaria Ley
+            21.473
+          default: false
+        name: only_verified_legal
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Search Faces V1 Faces Search Get
+                type: array
+                items:
+                  type: object
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/compliance/discrepancies:
+    get:
+      tags:
+      - Auditoría y Fiscalización (Ley N° 21.473)
+      summary: Detecta soportes clandestinos, sin permiso DOM o con subdeclaración
+        de m2 en la RM
+      operationId: list_compliance_discrepancies_v1_compliance_discrepancies_get
+      parameters:
+      - required: false
+        schema:
+          title: Commune Code
+          type: string
+        name: commune_code
+        in: query
+      - required: false
+        schema:
+          title: Status
+          enum:
+          - VERIFIED_LEGAL
+          - PARTIAL_COMPLIANCE
+          - UNREGISTERED_CLANDESTINE
+          - ZONING_VIOLATION_RISK
+          - EXPIRED_PERMIT
+          type: string
+        name: status
+        in: query
+      - required: false
+        schema:
+          title: Ley 21473 Class
+          enum:
+          - ELEMENTO_MENOR
+          - ELEMENTO_MAYOR
+          type: string
+        name: ley_21473_class
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response List Compliance Discrepancies V1 Compliance Discrepancies
+                  Get
+                type: object
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/compliance/communes/{commune_code}/summary:
+    get:
+      tags:
+      - Auditoría y Fiscalización (Ley N° 21.473)
+      summary: Resumen ejecutivo de auditoría OOH/DOOH para una municipalidad de la
+        RM
+      operationId: get_commune_compliance_summary_v1_compliance_communes__commune_code__summary_get
+      parameters:
+      - required: true
+        schema:
+          title: Commune Code
+          type: string
+        name: commune_code
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Commune Compliance Summary V1 Compliance Communes  Commune
+                  Code  Summary Get
+                type: object
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/campaigns/simulate:
+    post:
+      tags:
+      - Simulador de Campañas y Precios Netos
+      summary: Simula alcance OTS/VAC, inversión neta (descuento 30-55%) y riesgo
+        legal Ley 21.473
+      operationId: simulate_campaign_v1_campaigns_simulate_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignSimulationRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignSimulationResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/ingestion/municipal-batch:
+    post:
+      tags:
+      - Ingesta y Spatial Entity Resolution
+      summary: Cruza un lote de registros DOM (Art. 16 Ley 21.473) o Rentas contra
+        el inventario comercial
+      operationId: process_municipal_batch_v1_ingestion_municipal_batch_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MunicipalBatchIngestRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Process Municipal Batch V1 Ingestion Municipal Batch
+                  Post
+                type: object
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /health:
+    get:
+      tags:
+      - Sistema
+      summary: Health Check
+      operationId: health_check_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Health Check Health Get
+                type: object
+components:
+  schemas:
+    AssetMetadataInfo:
+      title: AssetMetadataInfo
+      required:
+      - entity_resolution_confidence
+      - last_scraped_at
+      - last_audited_at
+      - sources
+      type: object
+      properties:
+        entity_resolution_confidence:
+          title: Entity Resolution Confidence
+          type: number
+        last_scraped_at:
+          title: Last Scraped At
+          type: string
+        last_audited_at:
+          title: Last Audited At
+          type: string
+        sources:
+          title: Sources
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceLineageItem'
+    AssetRecord:
+      title: AssetRecord
+      required:
+      - asset_id
+      - location
+      - structure
+      - ownership
+      - faces
+      - compliance_audit
+      - metadata
+      type: object
+      properties:
+        asset_id:
+          title: Asset Id
+          type: string
+        location:
+          $ref: '#/components/schemas/LocationInfo'
+        structure:
+          $ref: '#/components/schemas/StructureInfo'
+        ownership:
+          $ref: '#/components/schemas/OwnershipInfo'
+        faces:
+          title: Faces
+          type: array
+          items:
+            $ref: '#/components/schemas/FaceItem'
+        compliance_audit:
+          $ref: '#/components/schemas/ComplianceAuditInfo'
+        metadata:
+          $ref: '#/components/schemas/AssetMetadataInfo'
+    AudienceMetricsInfo:
+      title: AudienceMetricsInfo
+      required:
+      - weekly_ots_gross
+      - visibility_index_weight
+      - weekly_vac_impacts
+      type: object
+      properties:
+        uoct_hourly_vehicles_avg:
+          title: Uoct Hourly Vehicles Avg
+          type: integer
+        mop_tmda_daily_vehicles:
+          title: Mop Tmda Daily Vehicles
+          type: integer
+        dtpm_bip_daily_validations:
+          title: Dtpm Bip Daily Validations
+          type: integer
+        sectra_occupancy_factor:
+          title: Sectra Occupancy Factor
+          type: number
+          default: 1.42
+        weekly_ots_gross:
+          title: Weekly Ots Gross
+          type: integer
+        visibility_index_weight:
+          title: Visibility Index Weight
+          type: number
+        weekly_vac_impacts:
+          title: Weekly Vac Impacts
+          type: integer
+        methodology:
+          title: Methodology
+          type: string
+          default: OPEN_SYNTHETIC_UOCT_ADATRAP_V1
+    CampaignSimulationRequest:
+      title: CampaignSimulationRequest
+      required:
+      - campaign_name
+      - face_ids
+      type: object
+      properties:
+        campaign_name:
+          title: Campaign Name
+          type: string
+        duration_weeks:
+          title: Duration Weeks
+          maximum: 52.0
+          minimum: 1.0
+          type: integer
+          default: 4
+        exclude_non_compliant_assets:
+          title: Exclude Non Compliant Assets
+          type: boolean
+          default: true
+        face_ids:
+          title: Face Ids
+          type: array
+          items:
+            type: string
+    CampaignSimulationResponse:
+      title: CampaignSimulationResponse
+      required:
+      - campaign_name
+      - total_faces_evaluated
+      - compliant_faces_approved
+      - rejected_by_ley_21473_risk
+      - rejected_face_ids
+      - communes_covered
+      - total_ots_gross
+      - total_vac_impacts
+      - financial_projection_clp
+      type: object
+      properties:
+        campaign_name:
+          title: Campaign Name
+          type: string
+        total_faces_evaluated:
+          title: Total Faces Evaluated
+          type: integer
+        compliant_faces_approved:
+          title: Compliant Faces Approved
+          type: integer
+        rejected_by_ley_21473_risk:
+          title: Rejected By Ley 21473 Risk
+          type: integer
+        rejected_face_ids:
+          title: Rejected Face Ids
+          type: array
+          items:
+            type: string
+        communes_covered:
+          title: Communes Covered
+          type: array
+          items:
+            type: string
+        total_ots_gross:
+          title: Total Ots Gross
+          type: integer
+        total_vac_impacts:
+          title: Total Vac Impacts
+          type: integer
+        financial_projection_clp:
+          title: Financial Projection Clp
+          type: object
+    CommercialPricingInfo:
+      title: CommercialPricingInfo
+      required:
+      - list_price_clp_monthly
+      - estimated_net_price_clp
+      - estimated_annual_municipal_tax_clp
+      type: object
+      properties:
+        billing_periodicity:
+          title: Billing Periodicity
+          enum:
+          - MONTHLY
+          - WEEKLY
+          - CAMPAIGN_14D
+          type: string
+          default: MONTHLY
+        list_price_clp_monthly:
+          title: List Price Clp Monthly
+          type: integer
+        production_cost_clp:
+          title: Production Cost Clp
+          type: integer
+          default: 0
+        estimated_net_discount_pct:
+          title: Estimated Net Discount Pct
+          type: number
+          default: 0.42
+        estimated_net_price_clp:
+          title: Estimated Net Price Clp
+          type: integer
+        estimated_annual_municipal_tax_clp:
+          title: Estimated Annual Municipal Tax Clp
+          type: integer
+    CommuneRM:
+      title: CommuneRM
+      required:
+      - commune_code
+      - commune_name
+      - province_name
+      - ring_tier
+      - utm_tax_rate_standard
+      - utm_tax_rate_led
+      type: object
+      properties:
+        commune_code:
+          title: Commune Code
+          type: string
+          description: Código Único Territorial CUT (ej. 13123)
+        commune_name:
+          title: Commune Name
+          type: string
+        province_name:
+          title: Province Name
+          type: string
+        ring_tier:
+          title: Ring Tier
+          maximum: 4.0
+          minimum: 1.0
+          type: integer
+          description: Anillo operativo RM (1 a 4)
+        utm_tax_rate_standard:
+          title: Utm Tax Rate Standard
+          type: number
+          description: Derecho semestral estándar en UTM/m2
+        utm_tax_rate_led:
+          title: Utm Tax Rate Led
+          type: number
+          description: Derecho semestral pantallas LED en UTM/m2
+        gis_rest_endpoint:
+          title: Gis Rest Endpoint
+          type: string
+    ComplianceAuditInfo:
+      title: ComplianceAuditInfo
+      required:
+      - status
+      - ley_21473_class
+      - solidary_liability_risk_level
+      type: object
+      properties:
+        status:
+          title: Status
+          enum:
+          - VERIFIED_LEGAL
+          - PARTIAL_COMPLIANCE
+          - UNREGISTERED_CLANDESTINE
+          - ZONING_VIOLATION_RISK
+          - EXPIRED_PERMIT
+          type: string
+        ley_21473_class:
+          title: Ley 21473 Class
+          enum:
+          - ELEMENTO_MENOR
+          - ELEMENTO_MAYOR
+          type: string
+        dom_permit_number:
+          title: Dom Permit Number
+          type: string
+        dom_authorized_area_m2:
+          title: Dom Authorized Area M2
+          type: number
+        municipal_patent_rol:
+          title: Municipal Patent Rol
+          type: string
+        patent_last_paid_semester:
+          title: Patent Last Paid Semester
+          type: string
+        patent_taxed_area_m2:
+          title: Patent Taxed Area M2
+          type: number
+        mop_vialidad_itf_resolution:
+          title: Mop Vialidad Itf Resolution
+          type: string
+        mma_ds1_lum_certified:
+          title: Mma Ds1 Lum Certified
+          type: boolean
+          default: false
+        prc_zone_code:
+          title: Prc Zone Code
+          type: string
+        is_exclusive_residential:
+          title: Is Exclusive Residential
+          type: boolean
+          default: false
+        distance_to_nearest_hazard_m:
+          title: Distance To Nearest Hazard M
+          type: number
+        permit_expiration_date:
+          title: Permit Expiration Date
+          type: string
+        solidary_liability_risk_level:
+          title: Solidary Liability Risk Level
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          type: string
+        risk_flags:
+          title: Risk Flags
+          type: array
+          items:
+            type: string
+    DimensionsInfo:
+      title: DimensionsInfo
+      required:
+      - width_m
+      - height_m
+      - area_m2
+      type: object
+      properties:
+        width_m:
+          title: Width M
+          type: number
+        height_m:
+          title: Height M
+          type: number
+        area_m2:
+          title: Area M2
+          type: number
+    FaceItem:
+      title: FaceItem
+      required:
+      - face_id
+      - face_label
+      - azimuth_degrees
+      - orientation_cardinal
+      - traffic_flow_direction
+      - dimensions
+      - technology
+      - audience_metrics
+      - commercial_pricing
+      type: object
+      properties:
+        face_id:
+          title: Face Id
+          type: string
+        face_label:
+          title: Face Label
+          type: string
+        azimuth_degrees:
+          title: Azimuth Degrees
+          type: integer
+        orientation_cardinal:
+          title: Orientation Cardinal
+          type: string
+        traffic_flow_direction:
+          title: Traffic Flow Direction
+          type: string
+        dimensions:
+          $ref: '#/components/schemas/DimensionsInfo'
+        technology:
+          $ref: '#/components/schemas/TechnologyInfo'
+        audience_metrics:
+          $ref: '#/components/schemas/AudienceMetricsInfo'
+        commercial_pricing:
+          $ref: '#/components/schemas/CommercialPricingInfo'
+    GeoJSONFeature:
+      title: GeoJSONFeature
+      required:
+      - id
+      - geometry
+      - properties
+      type: object
+      properties:
+        type:
+          title: Type
+          enum:
+          - Feature
+          type: string
+          default: Feature
+        id:
+          title: Id
+          type: string
+        geometry:
+          title: Geometry
+          type: object
+        properties:
+          title: Properties
+          type: object
+    GeoJSONFeatureCollection:
+      title: GeoJSONFeatureCollection
+      required:
+      - total_features
+      - features
+      type: object
+      properties:
+        type:
+          title: Type
+          enum:
+          - FeatureCollection
+          type: string
+          default: FeatureCollection
+        total_features:
+          title: Total Features
+          type: integer
+        features:
+          title: Features
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoJSONFeature'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    LocationInfo:
+      title: LocationInfo
+      required:
+      - lat
+      - lng
+      - utm_x
+      - utm_y
+      - address_raw
+      - address_normalized
+      - commune_code
+      - commune_name
+      - province_name
+      - road_type
+      type: object
+      properties:
+        lat:
+          title: Lat
+          type: number
+        lng:
+          title: Lng
+          type: number
+        utm_x:
+          title: Utm X
+          type: number
+        utm_y:
+          title: Utm Y
+          type: number
+        srid_geographic:
+          title: Srid Geographic
+          type: integer
+          default: 4326
+        srid_projected:
+          title: Srid Projected
+          type: integer
+          default: 32719
+        address_raw:
+          title: Address Raw
+          type: string
+        address_normalized:
+          title: Address Normalized
+          type: string
+        sii_parcel_rol:
+          title: Sii Parcel Rol
+          type: string
+        dtpm_stop_code:
+          title: Dtpm Stop Code
+          type: string
+        commune_code:
+          title: Commune Code
+          type: string
+        commune_name:
+          title: Commune Name
+          type: string
+        province_name:
+          title: Province Name
+          type: string
+        region_code:
+          title: Region Code
+          type: string
+          default: RM
+        road_type:
+          title: Road Type
+          type: string
+        highway_kilometer:
+          title: Highway Kilometer
+          type: number
+        speed_limit_kmh:
+          title: Speed Limit Kmh
+          type: integer
+          default: 50
+    MunicipalBatchIngestRequest:
+      title: MunicipalBatchIngestRequest
+      required:
+      - commune_code
+      - source_type
+      - records
+      type: object
+      properties:
+        commune_code:
+          title: Commune Code
+          type: string
+        source_type:
+          title: Source Type
+          enum:
+          - DOM_ART16
+          - RENTAS_PATENTES
+          type: string
+        records:
+          title: Records
+          type: array
+          items:
+            $ref: '#/components/schemas/MunicipalInboundRecord'
+    MunicipalInboundRecord:
+      title: MunicipalInboundRecord
+      required:
+      - record_id
+      - address
+      - area_m2
+      type: object
+      properties:
+        record_id:
+          title: Record Id
+          type: string
+        address:
+          title: Address
+          type: string
+        sii_parcel_rol:
+          title: Sii Parcel Rol
+          type: string
+        lat:
+          title: Lat
+          type: number
+        lng:
+          title: Lng
+          type: number
+        owner_rut:
+          title: Owner Rut
+          type: string
+        owner_name:
+          title: Owner Name
+          type: string
+        structure_type:
+          title: Structure Type
+          type: string
+          default: MONUMENTAL_LED
+        area_m2:
+          title: Area M2
+          type: number
+        dom_permit_number:
+          title: Dom Permit Number
+          type: string
+        municipal_patent_rol:
+          title: Municipal Patent Rol
+          type: string
+    OwnershipInfo:
+      title: OwnershipInfo
+      required:
+      - owner_id
+      - media_owner_name
+      - media_owner_rut
+      - mop_rnavc_status
+      type: object
+      properties:
+        owner_id:
+          title: Owner Id
+          type: string
+        media_owner_name:
+          title: Media Owner Name
+          type: string
+        media_owner_rut:
+          title: Media Owner Rut
+          type: string
+        mop_rnavc_status:
+          title: Mop Rnavc Status
+          enum:
+          - ACTIVE
+          - EXPIRED
+          - NOT_REGISTERED
+          type: string
+        commercial_contact:
+          title: Commercial Contact
+          type: string
+        concession_id:
+          title: Concession Id
+          type: string
+        concession_expiration_date:
+          title: Concession Expiration Date
+          type: string
+    SourceLineageItem:
+      title: SourceLineageItem
+      required:
+      - source_type
+      - reference_id
+      - verified_at
+      type: object
+      properties:
+        source_type:
+          title: Source Type
+          type: string
+        reference_id:
+          title: Reference Id
+          type: string
+        verified_at:
+          title: Verified At
+          type: string
+    StructureInfo:
+      title: StructureInfo
+      required:
+      - category
+      - sub_type
+      - land_regime
+      - total_height_m
+      type: object
+      properties:
+        category:
+          title: Category
+          enum:
+          - STREET_FURNITURE
+          - LARGE_FORMAT_ROADSIDE
+          - TRANSPORT_NETWORK
+          - BUILDING_FACADE
+          type: string
+        sub_type:
+          title: Sub Type
+          type: string
+        land_regime:
+          title: Land Regime
+          enum:
+          - BNUP
+          - PRIVATE_LOT
+          - FISCAL_FENCE
+          type: string
+        total_height_m:
+          title: Total Height M
+          type: number
+        installation_date:
+          title: Installation Date
+          type: string
+    TechnologyInfo:
+      title: TechnologyInfo
+      required:
+      - type
+      - illumination
+      type: object
+      properties:
+        type:
+          title: Type
+          enum:
+          - DOOH_LED
+          - STATIC_BACKLIGHT
+          - STATIC_PAPER
+          - TRIVISION
+          type: string
+        illumination:
+          title: Illumination
+          type: string
+        resolution_px:
+          title: Resolution Px
+          type: string
+        pixel_pitch_mm:
+          title: Pixel Pitch Mm
+          type: number
+        slot_duration_sec:
+          title: Slot Duration Sec
+          type: integer
+        loop_slots_total:
+          title: Loop Slots Total
+          type: integer
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
