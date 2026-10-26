@@ -1,6 +1,7 @@
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
-from app.data.seed_rm import repo
+from fastapi import Depends
+from app.dependencies import get_repository
 from app.schemas import (
     AssetRecord,
     ComplianceStatus,
@@ -20,6 +21,7 @@ router = APIRouter(prefix="/v1/assets", tags=["Inventario Físico (Assets)"])
     summary="Búsqueda geoespacial y multicriterio de estructuras OOH/DOOH en las 52 comunas RM",
 )
 def search_assets(
+    repo = Depends(get_repository),
     commune_code: Optional[str] = Query(default=None, description="Código CUT comunal (ej. 13123,13114)"),
     bbox: Optional[str] = Query(default=None, description="min_lng,min_lat,max_lng,max_lat"),
     near: Optional[str] = Query(default=None, description="lat,lng,radius_m (ej. -33.42628,-70.61094,1000)"),
@@ -104,7 +106,7 @@ def search_assets(
     response_model=AssetRecord,
     summary="Obtiene la ficha maestra tricapa (Asset + Faces + Compliance) de un soporte físico",
 )
-def get_asset_by_id(asset_id: str) -> AssetRecord:
+def get_asset_by_id(asset_id: str, repo = Depends(get_repository)) -> AssetRecord:
     asset = repo.get_asset(asset_id)
     if not asset:
         raise HTTPException(status_code=404, detail=f"Asset '{asset_id}' no encontrado en la Región Metropolitana")

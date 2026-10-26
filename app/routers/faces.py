@@ -1,6 +1,7 @@
 from typing import Optional
 from fastapi import APIRouter, Query
-from app.data.seed_rm import repo
+from fastapi import Depends
+from app.dependencies import get_repository
 from app.schemas import TechType
 
 router = APIRouter(prefix="/v1/faces", tags=["Caras Publicitarias y Planificación (Faces)"])
@@ -11,6 +12,7 @@ router = APIRouter(prefix="/v1/faces", tags=["Caras Publicitarias y Planificaci�
     summary="Buscador de caras publicitarias para compra de medios con métricas OTS/VAC y tarifas netas",
 )
 def search_faces(
+    repo = Depends(get_repository),
     commune_code: Optional[str] = Query(default=None),
     tech_type: Optional[TechType] = Query(default=None),
     min_area_m2: Optional[float] = Query(default=None, ge=0),

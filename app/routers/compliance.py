@@ -4,7 +4,8 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import StreamingResponse
 from app.config import settings
-from app.data.seed_rm import repo
+from fastapi import Depends
+from app.dependencies import get_repository
 from app.schemas import ComplianceStatus, Ley21473Class
 
 router = APIRouter(prefix="/v1/compliance", tags=["Auditoría y Fiscalización (Ley N° 21.473)"])
@@ -15,6 +16,7 @@ router = APIRouter(prefix="/v1/compliance", tags=["Auditoría y Fiscalización (
     summary="Detecta soportes clandestinos, sin permiso DOM o con subdeclaración de m2 en la RM",
 )
 def list_compliance_discrepancies(
+    repo = Depends(get_repository),
     commune_code: Optional[str] = Query(default=None),
     status: Optional[ComplianceStatus] = Query(default=None),
     ley_21473_class: Optional[Ley21473Class] = Query(default=None),
@@ -83,6 +85,7 @@ def list_compliance_discrepancies(
     summary="Exporta discrepancias detectadas en formato CSV",
 )
 def export_compliance_discrepancies(
+    repo = Depends(get_repository),
     commune_code: Optional[str] = Query(default=None),
 ) -> StreamingResponse:
     discrepancies = []
@@ -146,7 +149,7 @@ def export_compliance_discrepancies(
     "/communes/{commune_code}/summary",
     summary="Resumen ejecutivo de auditoría OOH/DOOH para una municipalidad de la RM",
 )
-def get_commune_compliance_summary(commune_code: str) -> dict:
+def get_commune_compliance_summary(commune_code: str, repo = Depends(get_repository)) -> dict:
     commune = repo.communes.get(commune_code)
     if not commune:
         raise HTTPException(status_code=404, detail=f"Comuna '{commune_code}' no existe en la Región Metropolitana")

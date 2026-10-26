@@ -1,6 +1,7 @@
 from typing import Optional
 from fastapi import APIRouter, Query
-from app.data.seed_rm import repo
+from fastapi import Depends
+from app.dependencies import get_repository
 from app.schemas import CommuneRM
 
 router = APIRouter(prefix="/v1", tags=["Territorios y Capas Base RM"])
@@ -12,6 +13,7 @@ router = APIRouter(prefix="/v1", tags=["Territorios y Capas Base RM"])
     summary="Lista las 52 comunas de la Región Metropolitana con sus anillos y tasas UTM/m2",
 )
 def get_rm_communes(
+    repo = Depends(get_repository),
     ring_tier: Optional[int] = Query(default=None, ge=1, le=4, description="Filtrar por Anillo Operativo RM (1 a 4)"),
     province_name: Optional[str] = Query(default=None, description="Filtrar por provincia (Santiago, Cordillera, Chacabuco, Maipo, Melipilla, Talagante)"),
 ) -> list[CommuneRM]:
@@ -22,7 +24,7 @@ def get_rm_communes(
     "/tiles/{z}/{x}/{y}.json",
     summary="Descriptor ligero de Vector Tiles (MVT) para el futuro visor cartográfico",
 )
-def get_vector_tile_preview(z: int, x: int, y: int) -> dict:
+def get_vector_tile_preview(z: int, x: int, y: int, repo = Depends(get_repository)) -> dict:
     assets = repo.list_assets()
     return {
         "tile_coord": {"z": z, "x": x, "y": y},

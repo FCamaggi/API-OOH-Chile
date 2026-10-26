@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from app.data.seed_rm import repo
+from fastapi import Depends
+from app.dependencies import get_repository
 from app.schemas import CampaignSimulationRequest, CampaignSimulationResponse
 
 router = APIRouter(prefix="/v1/campaigns", tags=["Simulador de Campañas y Precios Netos"])
@@ -10,7 +11,7 @@ router = APIRouter(prefix="/v1/campaigns", tags=["Simulador de Campañas y Preci
     response_model=CampaignSimulationResponse,
     summary="Simula alcance OTS/VAC, inversión neta (descuento 30-55%) y riesgo legal Ley 21.473",
 )
-def simulate_campaign(payload: CampaignSimulationRequest) -> CampaignSimulationResponse:
+def simulate_campaign(payload: CampaignSimulationRequest, repo = Depends(get_repository)) -> CampaignSimulationResponse:
     face_lookup: dict[str, tuple] = {}
     for asset in repo.list_assets():
         for face in asset.faces:

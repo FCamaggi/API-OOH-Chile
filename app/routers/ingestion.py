@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.data.seed_rm import repo
+from fastapi import Depends
+from app.dependencies import get_repository
 from app.schemas import MunicipalBatchIngestRequest
 from app.services.entity_resolution import compute_composite_match_score
 
@@ -10,7 +11,7 @@ router = APIRouter(prefix="/v1/ingestion", tags=["Ingesta y Spatial Entity Resol
     "/municipal-batch",
     summary="Cruza un lote de registros DOM (Art. 16 Ley 21.473) o Rentas contra el inventario comercial",
 )
-def process_municipal_batch(payload: MunicipalBatchIngestRequest) -> dict:
+def process_municipal_batch(payload: MunicipalBatchIngestRequest, repo = Depends(get_repository)) -> dict:
     if payload.commune_code not in repo.communes:
         raise HTTPException(status_code=404, detail=f"Comuna '{payload.commune_code}' no existe en la RM")
 
