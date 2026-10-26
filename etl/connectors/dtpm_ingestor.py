@@ -31,3 +31,29 @@ def parse_dtpm_stops_csv(csv_text: str, default_commune_code: str = "13101") -> 
             }
         )
     return parsed_stops
+
+
+def parse_dtpm_gtfs_stops(csv_content: str, default_commune_code: str = "13101") -> list[dict]:
+    reader = csv.DictReader(io.StringIO(csv_content.strip()))
+    parsed_stops: list[dict] = []
+    for row in reader:
+        lat = float(row["stop_lat"])
+        lng = float(row["stop_lon"])
+        utm_x, utm_y = wgs84_to_utm19s_approx(lat, lng)
+        stop_code = row.get("stop_code") or row.get("stop_id") or "UNKNOWN"
+        stop_name = row.get("stop_name", "")
+        parsed_stops.append(
+            {
+                "dtpm_stop_code": stop_code,
+                "address_raw": stop_name,
+                "address_normalized": normalize_chilean_address(stop_name),
+                "commune_code": row.get("commune_code", default_commune_code),
+                "lat": lat,
+                "lng": lng,
+                "utm_x": utm_x,
+                "utm_y": utm_y,
+                "structure_category": "STREET_FURNITURE",
+                "structure_sub_type": "BUS_SHELTER",
+            }
+        )
+    return parsed_stops
